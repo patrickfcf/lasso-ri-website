@@ -1,0 +1,154 @@
+---
+import '../styles/global.css';
+import { copy, type Locale } from '../content/site';
+import { pagePath } from '../lib/site.mjs';
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  page?: string;
+  noindex?: boolean;
+}
+const {
+  locale,
+  title,
+  description,
+  page = 'home',
+  noindex = false,
+} = Astro.props;
+const t = copy[locale];
+const otherLocale = locale === 'pt-BR' ? 'en' : 'pt-BR';
+const canonical = Astro.site
+  ? new URL(pagePath(locale, page), Astro.site)
+  : undefined;
+const allowIndex = import.meta.env.INDEX_SITE === 'true' && !noindex;
+const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta
+      name="robots"
+      content={allowIndex ? 'index, follow' : 'noindex, nofollow'}
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="theme-color" content="#0b3d91" />
+    <link rel="icon" type="image/png" href="/assets/lasso-icon.png" />
+    <link rel="apple-touch-icon" href="/assets/lasso-icon.png" />
+    {!noindex && canonical && (
+      <>
+        <link rel="canonical" href={canonical} />
+        <link
+          rel="alternate"
+          hreflang="pt-BR"
+          href={new URL(pagePath('pt-BR', page), Astro.site)}
+        />
+        <link
+          rel="alternate"
+          hreflang="en"
+          href={new URL(pagePath('en', page), Astro.site)}
+        />
+        <link
+          rel="alternate"
+          hreflang="x-default"
+          href={new URL(pagePath('pt-BR', page), Astro.site)}
+        />
+        <meta property="og:url" content={canonical} />
+      </>
+    )}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Lasso RI" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta
+      property="og:locale"
+      content={locale === 'pt-BR' ? 'pt_BR' : 'en_US'}
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">
+      {t.skip}
+    </a>
+    <header class="site-header wrap">
+      <a class="brand" href={pagePath(locale)} aria-label="Lasso RI">
+        <img src="/assets/lasso-icon.png" width="38" height="38" alt="" />
+        <span>
+          Lasso <span class="brand-ri">RI</span>
+        </span>
+      </a>
+      <nav
+        aria-label={
+          locale === 'pt-BR' ? 'Navegação principal' : 'Main navigation'
+        }
+      >
+        <a href={`${pagePath(locale)}#app`}>{t.nav[0]}</a>
+        <a
+          class="nav-detail"
+          href={pagePath(locale, 'how-we-build')}
+          aria-current={page === 'how-we-build' ? 'page' : undefined}
+        >
+          {t.nav[1]}
+        </a>
+        <a
+          href={pagePath(locale, 'support')}
+          aria-current={page === 'support' ? 'page' : undefined}
+        >
+          {t.nav[2]}
+        </a>
+        <a
+          class="language-link"
+          data-language
+          href={pagePath(otherLocale, page)}
+          lang={otherLocale}
+          hreflang={otherLocale}
+        >
+          {t.otherLanguage}
+        </a>
+      </nav>
+    </header>
+    <main id="main" tabindex="-1">
+      <slot />
+    </main>
+    <footer class="site-footer wrap">
+      <div class="footer-top">
+        <div>
+          <a class="footer-brand" href={pagePath(locale)}>
+            Lasso RI
+          </a>
+          <p>{t.footer}</p>
+        </div>
+        <nav aria-label={locale === 'pt-BR' ? 'Informações' : 'Information'}>
+          {footerPages.map((key, i) => (
+            <a href={pagePath(locale, key)}>{t.footerLinks[i]}</a>
+          ))}
+          <a href={pagePath(locale, 'how-we-build')}>{t.nav[1]}</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>
+          © {new Date().getFullYear()} Patrick Fonseca. {t.rights}
+        </span>
+        <a href="mailto:support@lassori.app">support@lassori.app</a>
+      </div>
+    </footer>
+    <script>
+      // Explicit navigation only: no browser-language redirect or persisted preference.
+      document
+        .querySelectorAll<HTMLAnchorElement>('[data-language]')
+        .forEach((link) => {
+          const url = new URL(link.href);
+          url.search = window.location.search;
+          url.hash = window.location.hash;
+          link.href = url.href;
+        });
+    </script>
+  </body>
+</html>

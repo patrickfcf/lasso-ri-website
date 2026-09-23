@@ -1,0 +1,13 @@
+---
+import Article from '../../components/Article.astro';
+import { articles, type PageKey } from '../../content/site';
+export function getStaticPaths() {
+  return Object.keys(articles.en).map((page) => ({
+    params: { page },
+    props: { page: page as PageKey },
+  }));
+}
+const { page } = Astro.props;
+---
+
+<Article locale="en" page={page} />

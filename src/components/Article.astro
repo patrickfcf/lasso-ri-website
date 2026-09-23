@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  articles,
+  copy,
+  contactUrl,
+  type Locale,
+  type PageKey,
+} from '../content/site';
+import { pagePath } from '../lib/site.mjs';
+interface Props {
+  locale: Locale;
+  page: PageKey;
+}
+const { locale, page } = Astro.props;
+const article = articles[locale][page];
+const t = copy[locale];
+---
+
+<BaseLayout
+  locale={locale}
+  title={`${article.title} | Lasso RI`}
+  description={article.intro}
+  page={page}
+>
+  <article class="article wrap">
+    <a class="back-link" href={pagePath(locale)}>
+      <span aria-hidden="true">← </span>
+      {t.back}
+    </a>
+    <header>
+      <h1>{article.title}</h1>
+      <p class="article-intro">{article.intro}</p>
+    </header>
+    <div class="article-body">
+      {article.sections.map((section) => (
+        <section>
+          <h2>{section.title}</h2>
+          <p>{section.text}</p>
+        </section>
+      ))}
+    </div>
+    {['support', 'privacy', 'accessibility'].includes(page) && (
+      <aside class="contact">
+        <a class="button" href={contactUrl}>
+          {t.contact}
+          <span aria-hidden="true">↗</span>
+        </a>
+        <p class="note">{t.contactNote}</p>
+      </aside>
+    )}
+  </article>
+</BaseLayout>

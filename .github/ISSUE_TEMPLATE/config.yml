@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Segurança
+    url: https://github.com/patrickfcf/lasso-ri-website/security/policy
+    about: Reporte vulnerabilidades de forma privada conforme a política.
