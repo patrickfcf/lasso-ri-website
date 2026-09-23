@@ -1,0 +1,45 @@
+{
+  "name": "lasso-ri-website",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22.12.0 <23"
+  },
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1",
+    "build": "astro build",
+    "preview": "astro preview --host 127.0.0.1",
+    "lint": "eslint . --max-warnings 0",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "typecheck": "astro check",
+    "test": "node --test test/*.test.mjs",
+    "test:build": "node --test test/build/*.test.mjs",
+    "test:e2e": "playwright test",
+    "check:repository": "node scripts/check-repository.mjs",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run check:repository && npm run build && npm run test:build && npm run test:e2e",
+    "preview:cloudflare": "wrangler dev --ip 127.0.0.1 --port 8787",
+    "deploy:check": "wrangler deploy --dry-run",
+    "deploy": "npm run build && npm run test:build && wrangler deploy"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.3.4"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@eslint/js": "^10.0.1",
+    "@playwright/test": "^1.63.0",
+    "cheerio": "^1.2.0",
+    "eslint": "^10.11.0",
+    "eslint-plugin-astro": "^3.2.1",
+    "globals": "^17.12.0",
+    "prettier": "^3.9.9",
+    "prettier-plugin-astro": "^1.0.1",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.70.1",
+    "wrangler": "^4.137.0"
+  }
+}

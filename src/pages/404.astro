@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { copy } from '../content/site';
+const t = copy['pt-BR'];
+---
+
+<BaseLayout
+  locale="pt-BR"
+  title="Página não encontrada | Lasso RI"
+  description={t.notFoundText}
+  noindex
+>
+  <div class="article wrap">
+    <h1>{t.notFound}</h1>
+    <p>{t.notFoundText}</p>
+    <a class="button" href="/">
+      {t.back}
+    </a>
+    <p lang="en">
+      Page not found. <a href="/en/">Return to the English home page.</a>
+    </p>
+  </div>
+</BaseLayout>
