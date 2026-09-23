@@ -1,0 +1,13 @@
+name: Sugestão
+description: Proponha uma melhoria concreta para visitantes.
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: Qual necessidade a melhoria resolve?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Sugestão e alternativas
