@@ -226,7 +226,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         },
         {
           title: 'Contato por e-mail',
-          text: 'Se você escrever para support@lassori.app, o endereço e o conteúdo enviados serão usados para tratar sua solicitação. Não envie senhas, extratos ou dados financeiros desnecessários. O provedor e as práticas operacionais de e-mail devem ser confirmados antes da publicação.',
+          text: 'Se você escrever para support@lassori.app, o endereço e o conteúdo enviados serão usados para tratar sua solicitação. Não envie senhas, extratos ou dados financeiros desnecessários.',
         },
         {
           title: 'Quando esta página muda',
@@ -364,7 +364,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         },
         {
           title: 'Email contact',
-          text: 'If you write to support@lassori.app, your address and message will be used to handle your request. Do not send passwords, statements or unnecessary financial data. The email provider and operational practices must be confirmed before publication.',
+          text: 'If you write to support@lassori.app, your address and message will be used to handle your request. Do not send passwords, statements or unnecessary financial data.',
         },
         {
           title: 'When this page changes',

@@ -7,3 +7,6 @@
 
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
+
+https://lasso-ri-website.k4fghhn4nb.workers.dev/*
+  X-Robots-Tag: noindex, nofollow
