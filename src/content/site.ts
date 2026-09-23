@@ -210,7 +210,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
       sections: [
         {
           title: 'Ao visitar este site',
-          text: 'O site não inclui analytics, anúncios, formulários de coleta, cookies próprios ou armazenamento de preferências. Fontes do sistema e imagens locais evitam solicitações a provedores de mídia. A hospedagem na Cloudflare processa dados técnicos de requisição, como endereço IP, para entregar e proteger as páginas.',
+          text: 'O código do site não inclui analytics, anúncios ou formulários de coleta, não define cookies e não armazena preferências no navegador. Fontes do sistema e imagens locais evitam solicitações a provedores de mídia. A hospedagem na Cloudflare processa dados técnicos de requisição, como endereço IP, para entregar e proteger as páginas. Mecanismos de proteção do provedor podem usar cookies de segurança.',
         },
         {
           title: 'No app Lasso RI',
@@ -348,7 +348,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
       sections: [
         {
           title: 'When you visit this site',
-          text: 'The site includes no analytics, advertising, collection forms, first-party cookies or stored preferences. System fonts and local images avoid requests to media providers. Cloudflare hosting processes technical request data, such as IP addresses, to deliver and protect pages.',
+          text: 'The website code includes no analytics, advertising or collection forms, sets no cookies and stores no browser preferences. System fonts and local images avoid requests to media providers. Cloudflare hosting processes technical request data, such as IP addresses, to deliver and protect pages. The provider’s protection mechanisms may use security cookies.',
         },
         {
           title: 'In the Lasso RI app',

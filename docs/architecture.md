@@ -43,6 +43,7 @@ A navegação continua funcional sem JavaScript, sem preservar query/fragmento.
 - `mailto:support@lassori.app`: abre o cliente de e-mail, sem formulário ou Resend.
 - GitHub: código, pull requests e validação, fora da navegação de visitantes.
 
-Não há cookies próprios, analytics, dados financeiros ou segredos de runtime.
+O código da aplicação não define cookies, analytics, dados financeiros ou segredos
+de runtime. A camada Cloudflare pode usar cookies de segurança.
 Solicitações de hosting e e-mails têm práticas próprias que devem estar refletidas
 na página pública de privacidade. Dependências de build não são SDKs do app.
