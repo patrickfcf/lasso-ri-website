@@ -28,3 +28,11 @@ variáveis. Não reutilize domínios ou chaves de outro produto.
 - CSS/script bloqueado: revise CSP e evite scripts inline; teste no preview Cloudflare.
 - Wrangler sem autenticação: desenvolvimento local funciona; deploy precisa do login
   autorizado na conta correta. Nunca cole tokens em issues ou no terminal em claro.
+
+## Compatibilidade do TypeScript
+
+O projeto usa TypeScript `~6.0.3`: `@astrojs/check@0.9.10` aceita as linhas 5 e 6,
+e `typescript-eslint@8.71.2` exige versão menor que 6.1. Atualize essa faixa apenas
+quando ambos os validadores suportarem a nova versão. Mantenha o lockfile junto
+ao manifesto e valide com `npm ci` normal; `--legacy-peer-deps` não resolve
+a incompatibilidade dos validadores.
