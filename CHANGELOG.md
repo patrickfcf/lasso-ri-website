@@ -5,6 +5,8 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- Resoluções corrigidas de `fast-uri` e Undici 7 para as ferramentas de validação,
+  preservando o Undici 8 do Astro e o gate de `npm audit`.
 - TypeScript limitado a `~6.0.3`, compatível com Astro check e typescript-eslint,
   permitindo `npm ci` sem exceções de peer dependencies.
 

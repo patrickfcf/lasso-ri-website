@@ -36,3 +36,16 @@ e `typescript-eslint@8.71.2` exige versão menor que 6.1. Atualize essa faixa ap
 quando ambos os validadores suportarem a nova versão. Mantenha o lockfile junto
 ao manifesto e valide com `npm ci` normal; `--legacy-peer-deps` não resolve
 a incompatibilidade dos validadores.
+
+## Dependências das ferramentas
+
+O lockfile resolve `fast-uri` em 3.1.9. O override de `undici@^7.0.0` exige
+`^7.30.1` para Cheerio e Miniflare; não afeta o Undici 8 usado pelo Astro.
+Miniflare ainda fixa uma versão 7 vulnerável, inclusive no Wrangler 4.152.0.
+Remova o override somente quando os manifests dos consumidores aceitarem uma
+versão corrigida, validando `npm ci`, `npm ls undici fast-uri`, `npm audit`,
+`npm run verify` e `npm run deploy:check` em Linux.
+
+Não use `npm audit fix --force`: a sugestão atual implica downgrade de Wrangler.
+O gate de audit continua habilitado no CI. Consulte também os limites da
+verificação em [Segurança](../SECURITY.md).
