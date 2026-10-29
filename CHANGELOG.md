@@ -5,10 +5,13 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- Atualização dos indicadores do repositório e da orientação de releases.
+
 - Resoluções corrigidas de `fast-uri` e Undici 7 para as ferramentas de validação,
   preservando o Undici 8 do Astro e o gate de `npm audit`.
-- TypeScript limitado a `~6.0.3`, compatível com Astro check e typescript-eslint,
-  permitindo `npm ci` sem exceções de peer dependencies.
+- Uma versão anterior limitou TypeScript a `~6.0.3` para manter compatibilidade
+  com Astro check e typescript-eslint. A atualização posterior para 7.0.2 exige
+  revisão de compatibilidade antes de uma instalação limpa.
 
 - Site institucional em português brasileiro e inglês, com identidade do Lasso RI.
 - Páginas de suporte, privacidade, termos, acessibilidade, próximos passos e engenharia.

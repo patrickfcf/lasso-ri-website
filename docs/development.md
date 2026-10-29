@@ -1,6 +1,6 @@
 # Desenvolvimento e ambiente
 
-Use Node 22.12+ na linha 22, como no CI, e `npm ci`. `.nvmrc` seleciona essa linha.
+Use Node 22.23.4 ou superior na linha 22, como no CI, e `npm ci`. `.nvmrc` seleciona essa linha.
 Para alterações de pacote, use `npm install` e versione o lockfile.
 
 `npm run dev` inicia Astro em 127.0.0.1:4321. `npm run preview` visualiza o build;

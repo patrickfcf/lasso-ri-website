@@ -1,5 +1,9 @@
 # Lasso RI Website
 
+[![CI](https://github.com/patrickfcf/lasso-ri-website/actions/workflows/ci.yml/badge.svg)](https://github.com/patrickfcf/lasso-ri-website/actions/workflows/ci.yml)
+[![Release](https://img.shields.io/github/v/release/patrickfcf/lasso-ri-website)](https://github.com/patrickfcf/lasso-ri-website/releases)
+[![Licença proprietária](https://img.shields.io/badge/licen%C3%A7a-propriet%C3%A1ria-lightgrey)](LICENSE)
+
 Website institucional do **Lasso RI**, um app nativo Apple para acompanhar relações
 com investidores de empresas brasileiras. Português brasileiro em `/`, inglês em
 `/en/`. Domínio definido pelo proprietário: **https://lassori.app**. Contato:
@@ -11,7 +15,7 @@ ao vivo, conta, assinatura, sincronização, recomendações ou download públic
 
 ## Desenvolvimento
 
-Node.js 22.12+ (linha 22), npm e Git. Nenhum segredo ou conta externa é necessário
+Node.js 22.23.4 ou superior dentro da linha 22, npm e Git. Nenhum segredo ou conta externa é necessário
 para desenvolver, testar ou gerar o site.
 
 ```sh

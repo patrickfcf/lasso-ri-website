@@ -9,6 +9,8 @@ Antes de publicar: npm run verify, dry-run Cloudflare, revisão de conteúdo PT/
 privacidade, domínio, caixa de suporte e estado de indexação. Depois: teste a URL
 pública, 404, redirects, metadados e headers. Registre revisão e versão de deploy.
 
-O histórico inicial contém um commit vazio feito em branch de bootstrap para
-permitir criar main em um repositório sem histórico. Todo o site permanece em uma
-branch de implementação e entra em main somente por PR; o agente não faz merge.
+O histórico inclui uma branch inicial de bootstrap e releases já publicadas no
+[GitHub](https://github.com/patrickfcf/lasso-ri-website/releases). Não mova nem
+reescreva tags existentes. Os workflows versionados validam push em `main` e PRs;
+não há workflow de publicação acionado por tag. O deploy Cloudflare é uma etapa
+separada que exige autorização e revisão das configurações de hospedagem.
