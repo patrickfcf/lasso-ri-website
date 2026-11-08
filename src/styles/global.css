@@ -179,7 +179,9 @@ img {
   top: 52px;
   margin: 0;
   padding: 16px;
-  min-width: 180px;
+  width: 200px;
+  min-width: 0;
+  max-width: calc(100vw - 32px);
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius);
@@ -194,13 +196,16 @@ img {
   margin-bottom: 8px;
 }
 .theme-picker label {
+  clear: both;
   display: flex;
   align-items: center;
   gap: 12px;
   min-height: 44px;
   cursor: pointer;
+  white-space: nowrap;
 }
 .theme-picker input {
+  flex: none;
   accent-color: var(--accent);
   width: 18px;
   height: 18px;

@@ -97,6 +97,53 @@ test('missing pages return 404 and slash normalization preserves queries', async
 });
 
 for (const path of ['/', '/en/']) {
+  test(`${path} appearance menu keeps every option inside a compact row`, async ({
+    page,
+  }, testInfo) => {
+    await page.goto(path);
+    await page.locator('.theme-picker summary').click();
+    for (const width of [testInfo.project.use.viewport!.width, 320]) {
+      await page.setViewportSize({ width, height: 900 });
+      const geometry = await page
+        .locator('.theme-picker fieldset')
+        .evaluate((panel) => {
+          const box = panel.getBoundingClientRect();
+          const legend = panel.querySelector('legend')!.getBoundingClientRect();
+          return {
+            left: box.left,
+            right: box.right,
+            legendBottom: legend.bottom,
+            rows: [...panel.querySelectorAll('label')].map((row) => {
+              const bounds = row.getBoundingClientRect();
+              const radio = row.querySelector('input')!.getBoundingClientRect();
+              return {
+                top: bounds.top,
+                bottom: bounds.bottom,
+                height: bounds.height,
+                left: bounds.left,
+                right: bounds.right,
+                radioWidth: radio.width,
+              };
+            }),
+          };
+        });
+      expect(geometry.left).toBeGreaterThanOrEqual(0);
+      expect(geometry.right).toBeLessThanOrEqual(width);
+      expect(geometry.rows).toHaveLength(3);
+      let previousBottom = geometry.legendBottom;
+      for (const row of geometry.rows) {
+        expect(row.top).toBeGreaterThanOrEqual(previousBottom);
+        expect(row.height).toBeGreaterThanOrEqual(44);
+        expect(row.height).toBeLessThanOrEqual(56);
+        expect(row.left).toBeGreaterThan(geometry.left);
+        expect(row.right).toBeLessThan(geometry.right);
+        expect(row.radioWidth).toBeGreaterThanOrEqual(18);
+        previousBottom = row.bottom;
+      }
+    }
+    await page.screenshot({ path: testInfo.outputPath('appearance-menu.png') });
+  });
+
   test(`${path} theme choices, architecture and sample dates work without JavaScript`, async ({
     browser,
   }, testInfo) => {

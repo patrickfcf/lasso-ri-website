@@ -5,6 +5,9 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- Correção do seletor de aparência: opções em linhas completas, sem quebra de
+  palavras ou sobreposição com o título em PT-BR/EN, desktop e mobile.
+
 - TypeScript 7.0.2 para a verificação nativa, com o pacote oficial de
   compatibilidade da API 6 para Astro check e ESLint; instalação limpa sem
   ignorar peer dependencies e ambos os verificadores de tipos no gate existente.
