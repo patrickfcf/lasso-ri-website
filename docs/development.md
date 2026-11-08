@@ -31,11 +31,24 @@ variáveis. Não reutilize domínios ou chaves de outro produto.
 
 ## Compatibilidade do TypeScript
 
-O projeto usa TypeScript `~6.0.3`: `@astrojs/check@0.9.10` aceita as linhas 5 e 6,
-e `typescript-eslint@8.71.2` exige versão menor que 6.1. Atualize essa faixa apenas
-quando ambos os validadores suportarem a nova versão. Mantenha o lockfile junto
-ao manifesto e valide com `npm ci` normal; `--legacy-peer-deps` não resolve
-a incompatibilidade dos validadores.
+O projeto usa a [configuração oficial de coexistência do TypeScript 6 e 7](https://devblogs.microsoft.com/typescript/announcing-typescript-7-0/#running-side-by-side-with-typescript-60):
+
+- `typescript` é um alias npm para `@typescript/typescript6@6.0.2`, que reexporta
+  a API da linha 6; o lockfile resolve sua implementação em TypeScript 6.0.3.
+  Astro check e typescript-eslint dependem dessa API e recebem essa versão.
+- `@typescript/native` é um alias npm para `typescript@7.0.2` e fornece o
+  executável `tsc`. O pacote de compatibilidade fornece `tsc6`, sem colisão.
+- `npm run typecheck` executa `astro check` para os componentes `.astro` e o
+  projeto TypeScript, seguido de `tsc --noEmit` para verificar os arquivos
+  TypeScript com o compilador nativo 7. O segundo comando não verifica templates
+  Astro e não substitui o primeiro.
+
+`@astrojs/check@0.9.12` aceita as linhas 5 e 6, e
+`typescript-eslint@8.72.1` exige versão menor que 6.1. Não aponte o alias
+`typescript` para a linha 7 até ambos suportarem sua nova API. Atualize manifesto
+e lockfile juntos e valide com `npm ci` normal; `--legacy-peer-deps` ou `--force`
+não corrigem essa incompatibilidade. `npx tsc --version` e
+`npx tsc6 --version` permitem conferir os dois compiladores instalados.
 
 ## Dependências das ferramentas
 

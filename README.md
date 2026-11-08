@@ -30,7 +30,7 @@ use `npx astro dev stop` quando terminar.
 ```sh
 npm run format:check       # Prettier, incluindo Astro
 npm run lint               # ESLint, TypeScript e Astro
-npm run typecheck          # Astro check + TypeScript estrito
+npm run typecheck          # Astro check + compilador nativo TypeScript 7
 npm test                   # Contratos de URL e roteamento
 npm run check:repository   # Documentação, links e isolamento da identidade
 npm run build              # HTML estático em dist/
