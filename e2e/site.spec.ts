@@ -233,10 +233,17 @@ for (const path of ['/', '/en/']) {
     }));
     expect(metrics.cls).toBeLessThan(0.1);
     expect(metrics.remote).toEqual([]);
+    // Inline screenshot styles are blocked by the site's CSP. Hide the page chrome
+    // with native attributes only while capturing the isolated component.
+    await page.locator('.site-header, .skip-link').evaluateAll((elements) => {
+      elements.forEach((element) => element.setAttribute('hidden', ''));
+    });
     const screenshot = await page.locator('.signature-stage').screenshot({
       path: testInfo.outputPath('signature.png'),
       animations: 'disabled',
-      style: '.site-header, .skip-link { visibility: hidden; }',
+    });
+    await page.locator('.site-header, .skip-link').evaluateAll((elements) => {
+      elements.forEach((element) => element.removeAttribute('hidden'));
     });
     expect(screenshot.byteLength).toBeGreaterThan(1000);
     await testInfo.attach('Layout metrics', {
