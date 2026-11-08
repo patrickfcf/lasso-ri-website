@@ -36,12 +36,34 @@ somente consultados, sem alterações pelo agente. Confirme que a caixa ou alias
 
 ## Deploys futuros
 
-GitHub Actions valida PRs e main, sem secrets ou deploy automático. Se habilitar
-Workers Builds no painel, conecte este repositório após o merge e use Node 22,
-`npm ci && npm run build` como build, `npx wrangler deploy` como deploy, e defina
-as variáveis de build. Restrinja publicação de produção à branch main. Branch
-previews devem manter `INDEX_SITE=false` e não atualizar o domínio de produção.
-Não use credenciais de outros projetos.
+GitHub Actions continua validando PRs e `main`, sem credenciais de deploy.
+Desde 2026-11-08, o Worker existente está conectado a
+`patrickfcf/lasso-ri-website` pelo **Cloudflare Workers Builds**. Pushes em `main`
+disparam a publicação de produção em `lassori.app`; previews estão desabilitados.
+Tags e releases do GitHub não são os gatilhos dessa configuração.
+
+Configuração operacional em Workers & Pages → lasso-ri-website → Settings → Builds:
+
+- Branch: `main`; diretório: `/`; variável pública `NODE_VERSION=22.23.4`.
+- Token próprio: `lasso-ri-website production build token`, gerenciado na
+  Cloudflare. Nunca copiar seu valor para o repositório ou logs.
+- Build:
+
+  ```sh
+  npm ci && npm run check:tokens && npm run format:check && npm run lint && npm run typecheck && npm test && npm run check:repository && INDEX_SITE=true npm run build && INDEX_SITE=true npm run test:build && npm audit --audit-level=high
+  ```
+
+- Deploy: `npx wrangler deploy`, usando o Wrangler fixado pelo lockfile.
+
+Os testes de navegador/axe continuam no GitHub Actions. Workers Builds executa
+as verificações acima no próprio checkout antes de publicar; não aguarda o
+resultado independente do GitHub Actions. Preserve as regras de revisão e os
+checks exigidos antes de mergear em `main`.
+
+O build de produção habilita indexação explicitamente. Builds locais continuam
+não indexáveis por padrão. A configuração não exige banco, bindings, cron ou
+alteração de DNS. Uma execução manual do trigger pode publicar a revisão atual
+sem criar commit vazio; confirme branch/commit e acompanhe o resultado.
 
 ## Recuperação
 
