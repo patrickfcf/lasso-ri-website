@@ -5,6 +5,9 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- Correção do seletor de aparência: opções em linhas completas, sem quebra de
+  palavras ou sobreposição com o título em PT-BR/EN, desktop e mobile.
+
 - Workers Builds conectado ao website: publicação automática de `main`, Node 22,
   token próprio e validações antes do deploy; previews desabilitados.
 
