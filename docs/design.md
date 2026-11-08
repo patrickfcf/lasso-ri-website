@@ -1,99 +1,51 @@
-# Design
+# Design C2
 
-O Lasso RI se apresenta como plataforma de inteligência de Relações com
-Investidores. O slogan português é **A empresa além da cotação.**; a adaptação
-inglesa é **The company beyond the stock price.** Não é uma corretora nem um
-serviço de recomendação. O estágio de cada experiência faz parte do conteúdo.
+C2 — Monochrome + Signature Accent é a direção oficial escolhida em 08/11/2026,
+sucessora da Richmond Ink. A arquitetura da experiência aprovada na PR #23 permanece;
+esta PR migra os fundamentos visuais e a governança, sem duplicar o redesign.
+O slogan é **A empresa além da cotação.**, com adaptação inglesa
+**The company beyond the stock price.** Mascote e PNGs Light/Dark originais intactos.
 
-## Direção e tokens
+## Fonte canônica
 
-Redesign editorial com CSS nativo: variação 6/10, movimento 3/10 e densidade 4/10.
-Hierarquia tipográfica, superfícies neutras, demonstrações com origem identificada
-e arquitetura explorável substituem o ícone ampliado como narrativa principal.
-Fontes de sistema, sem requisições externas e sem layout shift por webfonts.
+[Marca](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/Ecosystem/Brand.md),
+[sistema e tipografia](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/Ecosystem/DesignSystem.md),
+[tokens v1.0.0](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/Ecosystem/DesignTokens.json),
+[arquitetura](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/PlatformArchitecture.md),
+[ADR-009](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/adr/ADR-009-C2-Design-and-Governance.md) e
+[governança](https://github.com/patrickfcf/lasso-ri/blob/codex/c2-monochrome-design-system/Docs/Ecosystem/CrossRepoGovernance.md)
+ficam no repositório Apple existente. Links apontam à branch de revisão canônica;
+retarget para revisão imutável/main após revisão, sem fetch de tokens no build.
 
-Fonte de identidade: CURSI-105, aprovada em 20/10/2026, e
-[especificação Richmond Ink](https://github.com/patrickfcf/lasso-ri/blob/main/design-exploration/one-screen-experience/COLOR_EXPLORATION.md).
-Os valores de `palette-tokens.json` são aplicados em `src/styles/global.css`.
-São aliases do website, não novos tokens oficiais de produto.
+## Aplicação Web
 
-| Papel         | Claro   | Escuro  |
-| ------------- | ------- | ------- |
-| Ação          | #163C72 | #9EBFF2 |
-| Acento quente | #A64439 | #F0A18E |
-| Fundo         | #F3F5F8 | #101A29 |
-| Superfície    | #FFFFFF | #1B293C |
-| Texto         | #172337 | #F4F6FA |
-| Secundário    | #536277 | #B2BED0 |
-| Linha         | #D8DFE9 | #354459 |
-| Ação suave    | #E8EEF7 | #273F60 |
-| Navy          | #10284F | #173B69 |
-| Marca         | #243F67 | #26466E |
-| Positivo      | #17613F | #93D3B0 |
-| Negativo      | #963C3A | #F2AAA0 |
-| Atenção       | #89500C | #F7C789 |
-| Sobre ação    | #FFFFFF | #101A29 |
+`src/design/tokens.json` é o snapshot exato, não uma especificação concorrente.
+`src/design/source.json` identifica versão, revisão e SHA-256. O gerador
+`node scripts/c2-tokens.mjs` produz `src/styles/tokens.css`; `--check` rejeita drift
+e valida os 126 pares de contraste da fonte. A troca de paleta se concentra na
+especificação, seguida de geração/revisão dos consumidores.
 
-Acento quente identifica RI e poucos detalhes editoriais; não representa retorno,
-queda ou erro. Quantias de demonstração ficam neutras. Fatos relevantes e JCP
-mantêm rótulos legíveis. Espaçamento base 4/8/12/16/20/24/32; superfícies com raio
-12, controles 8 e mockups 24. Header fica na camada 10 e skip link na 20.
+Aliases Web mapeiam bg/surface/text/muted/accent para os papéis canônicos. O antigo
+accent-soft usado em grandes áreas agora mapeia fundo neutro; selection mantém
+Accent Subtle para seleção real. Azul fica em ações/foco/seleções, sem gradientes
+azuis amplos. Company marks são neutras e não representam desempenho. Não há acento
+quente de marca. Cores financeiras são independentes e requerem sinais/rótulos.
 
-**Divergência resolvida:** o AGENTS.md original prescrevia #0b3d91/#7aa7ff, anteriores
-à ratificação Richmond Ink. O briefing explícito e CURSI-105 prevalecem. Os dois
-PNG originais permanecem intactos; o logotipo não foi redesenhado. C1/C2/C3 seguem
-estudos não aprovados, mesmo quando aparecem nas referências anexadas.
+Sistema tipográfico permanece local, com SF apenas quando oferecida pelo SO,
+Segoe UI/sans-serif como alternativas; não redistribuir fontes Apple. Dimensões de
+texto usam rem/clamp e o mockup reflui com texto ampliado. Temas manuais/sistema,
+menu, datas e camadas funcionam sem JS; sem persistir preferências.
+Animações são breves e respeitam Reduce Motion. O mockup é uma demonstração
+conceitual com dados sintéticos rotulados, não uma versão distribuída.
 
-## Referências e limites
+## História e referências
 
-Foram consultados o site público anterior, os projetos Platform/Apple no Linear,
-CURSI-87/88/89/90/105/22/23 e a decisão CURSI-1. O README e ADR-007/008 atuais do
-repositório Apple prevalecem sobre descrições históricas: a direção é conta Lasso
-compartilhada com uso local, ainda não implementada. Backend/MCP estavam vazios.
-A matriz detalhada está em [descoberta](ecosystem-discovery.md).
+CURSI-105 e o redesign Richmond da PR #23 permanecem histórico. A nova escolha C2
+supersede essas cores e o texto anterior que dizia C1/C2/C3 não aprovados. Não muda
+histórico de funcionalidades. Figma/HTML anteriores são referências históricas,
+sem alegar atualização/freeze por esta PR. Flighty, Linear, Apple Stocks, Stripe,
+Plaid e Raycast orientam princípios, sem cópia. Os anexos do proprietário reforçam
+neutralidade, clareza financeira e personalidade no mascote.
 
-No [Figma Signature](https://www.figma.com/design/H41g12DmBk96zKjGR28tOO), foram
-consultados os nós `2:197` (Home clara), `2:267` (escura) e `10:222` (landing).
-A composição reutiliza a hierarquia C: toolbar, radar, período, próximo provento,
-semana, acontecimentos e empresas. O mockup é HTML semântico responsivo; não é
-uma screenshot da versão distribuída. O Figma usa Inter como proxy; o website
-preserva a fonte de sistema aprovada. Não houve edição do Figma nem de outro repo.
-
-Os oito anexos do briefing orientam slogan, neutralidade, arquitetura e distinção
-entre visão e implementação. As capturas históricas não autorizam criar outro
-repositório web ou anunciar execução de monitores.
-
-Princípios estudados: hierarquia editorial do [Linear](https://linear.app/),
-infraestrutura como narrativa da [Stripe](https://stripe.com/) e
-[Plaid](https://plaid.com/), clareza técnica da [Vercel](https://vercel.com/),
-demonstração de produto da [Raycast](https://raycast.com/) e composição do
-[Figma](https://www.figma.com/). Nenhum asset, texto ou layout foi copiado.
-
-## Interação e acessibilidade
-
-- Light/Dark/Sistema por radios nativos e `:has()`, sem JS, cookies ou persistência.
-  Sistema é o padrão em cada página. Escolha manual vale até navegar/recarregar.
-- Menu móvel, FAQ, anúncio/datas e camadas Core/API usam `details/summary`.
-  O JS apenas fecha o menu ao navegar, devolve foco ao fechar com Escape e preserva
-  query/hash no idioma. As funções básicas continuam disponíveis sem JS.
-- Diagrama tem ordem de leitura real, fontes, camadas expansíveis e seis destinos.
-  O desktop ramifica conexões; mobile reorganiza os canais em duas colunas.
-- Entrada do hero e fluxo de informação têm movimento breve; revelação em scroll
-  só quando CSS suporta. Sem esconder conteúdo por JS ou animação infinita.
-  `prefers-reduced-motion` remove as animações e scroll suave.
-- Headings sem saltos, um h1, skip link, foco visível, nenhum controle falso no
-  mockup. Período e semana são ilustrações estáticas, sem aparência de botões.
-
-Demonstrações usam Companhia Aurora/Horizonte e DEMO3/EXMP4, com rótulo explícito
-em ambos os idiomas. TAEE11/BBAS3 aparecem apenas na solicitação conceitual; não
-há documento, cotação, dividendo ou resultado atribuído a esses emissores.
-
-Ver [testes](testing.md) para evidências e limites. Axe não certifica WCAG inteira;
-VoiceOver, Safari/Firefox e dispositivos físicos continuam revisão recomendada.
-
-## Assets sociais
-
-As imagens OG PT/EN são composições editoriais próprias de 1200×630. Para
-atualizá-las, rode `node scripts/generate-social-images.mjs` na raiz após instalar
-Chromium. A fonte de sistema segue o host de geração; confira o PNG antes de
-commitar. O script não publica nem acessa dados externos.
+Gerar imagens OG: `node scripts/generate-social-images.mjs`. O gerador usa o snapshot
+C2. As composições PNG são assets editoriais e não relatórios de QA.

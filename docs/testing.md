@@ -59,7 +59,7 @@ integram a matriz automática. Não afirmar certificação WCAG com base no axe.
 Após uma futura publicação autorizada, conferir HTTP, redirects, robots, sitemap,
 CSP e assets pela URL real.
 
-## Evidência local do redesign (08/11/2026)
+## Evidência histórica do redesign Richmond (08/11/2026)
 
 Node 22.23.4 / npm 10.9.9, lockfile existente, Chromium via Playwright 1.64.1.
 `npm ci`, instalação do Chromium, `npm run verify` (72 testes de navegador),
@@ -83,3 +83,11 @@ A instalação reportou 11 vulnerabilidades moderadas preexistentes nas ferramen
 não foi feita atualização de dependências fora do escopo. Ver SECURITY.md para
 limitações conhecidas do tooling. Nenhuma vulnerabilidade alta foi afirmada como
 corrigida por este redesign.
+
+## Migração C2 v1.0.0 (08/11/2026)
+
+Snapshot canônico com SHA-256, 126 pares de contraste e CSS gerado validados
+por npm run check:tokens. npm ci, instalação Chromium, npm run verify
+(72 testes de navegador), npm run deploy:check e git diff --check executados.
+As notas Lighthouse acima pertencem ao redesign Richmond; não são uma nova
+medição C2. Nenhum merge ou deploy foi realizado.

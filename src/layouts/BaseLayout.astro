@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { Image, getImage } from 'astro:assets';
 import brandIcon from '../../public/assets/lasso-icon.png';
+import darkBrandIcon from '../../public/assets/lasso-icon-dark.png';
 import { copy, type Locale } from '../content/site';
 import { pagePath } from '../lib/site.mjs';
 interface Props {
@@ -77,7 +78,7 @@ const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
       content={allowIndex ? 'index, follow' : 'noindex, nofollow'}
     />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#163c72" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="icon" type="image/png" href={favicon.src} />
     <link rel="apple-touch-icon" href={touchIcon.src} />
     {!noindex && canonical && (
@@ -134,7 +135,18 @@ const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
       <div class="header-inner wrap">
         <a class="brand" href={pagePath(locale)} aria-label="Lasso RI">
           <Image
+            class="brand-icon-light"
             src={brandIcon}
+            width={32}
+            height={32}
+            densities={[1, 2]}
+            format="webp"
+            alt=""
+            loading="eager"
+          />
+          <Image
+            class="brand-icon-dark"
+            src={darkBrandIcon}
             width={32}
             height={32}
             densities={[1, 2]}

@@ -1,0 +1,90 @@
+/* Generated C2 1.0.0. Source and SHA-256: src/design/source.json. */
+:root {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --surface-secondary: #f8f9fa;
+  --elevated: #ffffff;
+  --text: #15171a;
+  --muted: #68707b;
+  --tertiary: #68707b;
+  --accent: #2463eb;
+  --brand-ink: #15171a;
+  --line: #e5e7eb;
+  --control-border: #858b95;
+  --accent-soft: #f8f9fa;
+  --selection: #eef4ff;
+  --navy: #f1f3f5;
+  --mark: #f1f3f5;
+  --positive: #17613f;
+  --negative: #a33a36;
+  --neutral: #68707b;
+  --disclosure: #94500a;
+  --pending: #78551c;
+  --error: #b42318;
+  --warning: #78551c;
+  --information: #536174;
+  --on-accent: #ffffff;
+  --icon-light-display: block;
+  --icon-dark-display: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not(:has(#theme-light:checked)) {
+    color-scheme: dark;
+    --bg: #101114;
+    --surface: #1d1f24;
+    --surface-secondary: #17191d;
+    --elevated: #252830;
+    --text: #f5f6f7;
+    --muted: #a4a9b2;
+    --tertiary: #8f959f;
+    --accent: #8ab4ff;
+    --brand-ink: #f5f6f7;
+    --line: #33363d;
+    --control-border: #8f959f;
+    --accent-soft: #17191d;
+    --selection: #182b49;
+    --navy: #202228;
+    --mark: #202228;
+    --positive: #93d3b0;
+    --negative: #f2aaa0;
+    --neutral: #a4a9b2;
+    --disclosure: #f7c789;
+    --pending: #e8c58c;
+    --error: #ffb4ab;
+    --warning: #f7c789;
+    --information: #b9c2d0;
+    --on-accent: #101114;
+    --icon-light-display: none;
+    --icon-dark-display: block;
+  }
+}
+:root:has(#theme-dark:checked) {
+  color-scheme: dark;
+  --bg: #101114;
+  --surface: #1d1f24;
+  --surface-secondary: #17191d;
+  --elevated: #252830;
+  --text: #f5f6f7;
+  --muted: #a4a9b2;
+  --tertiary: #8f959f;
+  --accent: #8ab4ff;
+  --brand-ink: #f5f6f7;
+  --line: #33363d;
+  --control-border: #8f959f;
+  --accent-soft: #17191d;
+  --selection: #182b49;
+  --navy: #202228;
+  --mark: #202228;
+  --positive: #93d3b0;
+  --negative: #f2aaa0;
+  --neutral: #a4a9b2;
+  --disclosure: #f7c789;
+  --pending: #e8c58c;
+  --error: #ffb4ab;
+  --warning: #f7c789;
+  --information: #b9c2d0;
+  --on-accent: #101114;
+  --icon-light-display: none;
+  --icon-dark-display: block;
+}

@@ -63,3 +63,16 @@ SEO conserva os gates de indexação, canonical/hreflang/sitemap e adiciona OG
 1200×630 por idioma. Microdata Schema.org WebSite/WebPage usa nome, URL, descrição
 e idioma factuais, sem ratings, disponibilidade de app ou ofertas inventadas.
 Microdata evita scripts inline e preserva a CSP original.
+
+## Ecossistema e C2
+
+A empresa além da cotação. A identidade ativa é C2 — Monochrome + Signature Accent;
+Richmond Ink é histórica. Consulte [design canônico e tokens](design.md)
+e a governança dos quatro repositórios ali vinculada. Avalie contratos, docs e
+mensagens públicas em Apple/backend/MCP/website; revisão não obriga editar todos.
+[Apple Apps](https://github.com/patrickfcf/lasso-ri),
+[Backend](https://github.com/patrickfcf/lasso-ri-backend) e
+[MCP](https://github.com/patrickfcf/lasso-ri-mcp) compartilham a arquitetura planejada.
+[Platform Linear](https://linear.app/luneta/project/lasso-ri-platform-and-ai-ecosystem-68609d2fecc1)
+e [Apple Linear](https://linear.app/luneta/project/lasso-ri-apple-apps-signature-redesign-2dc05903995f)
+coordenam dependências. Core/API/MCP/Intelligence/portal/webhooks continuam planejados.

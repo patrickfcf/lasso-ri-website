@@ -8,8 +8,8 @@
 - O app usa dados de exemplo. Não invente disponibilidade, métricas, depoimentos,
   preços, feed ao vivo, autenticação ou integrações. Valide afirmações no produto.
 - Preserve o ícone original, fontes de sistema e hierarquia editorial. Use a
-  Richmond Ink aprovada na CURSI-105 (#163C72/#9EBFF2), conforme docs/design.md.
-  A referência estrutural não define a marca; os azuis anteriores são históricos.
+  C2 — Monochrome + Signature Accent, conforme docs/design.md. Richmond Ink
+  (CURSI-105) é histórica. Nunca reintroduza a paleta anterior como alvo ativo.
 
 ## Arquitetura e conteúdo
 
@@ -47,3 +47,15 @@
 - Não coloque mensagens de suporte ou dados financeiros em logs, testes ou PRs.
 - Preserve a política CSP; scripts e estilos são locais, sem inline inseguro.
 - Não adicione analytics, formulários ou serviços pagos sem escopo explícito.
+
+## Governança permanente do ecossistema
+
+Consulte os links canônicos em docs/design.md: marca, tokens, tipografia, arquitetura
+e política dos quatro repositórios. Use tokens semânticos; nenhum hex arbitrário.
+Preserve Light/Dark, acessibilidade, mascote e ícones originais. Para cada feature,
+avalie Apple/backend/MCP/website: modelos, contratos, privacidade, documentação e
+mensagem pública. Registre os repositórios sem alteração e o motivo. Coordene
+contratos incompatíveis antes de implementar. Não anuncie recursos indisponíveis.
+Atualize documentação/CHANGELOG, vincule Linear/PRs e registre validações ausentes.
+Execute npm run check:tokens; ao sincronizar compare o snapshot com a revisão
+canônica. Nunca faça merge ou deploy sem autorização.
