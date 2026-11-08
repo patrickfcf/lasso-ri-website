@@ -236,6 +236,7 @@ for (const path of ['/', '/en/']) {
     const screenshot = await page.locator('.signature-stage').screenshot({
       path: testInfo.outputPath('signature.png'),
       animations: 'disabled',
+      style: '.site-header, .skip-link { visibility: hidden; }',
     });
     expect(screenshot.byteLength).toBeGreaterThan(1000);
     await testInfo.attach('Layout metrics', {
