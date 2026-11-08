@@ -91,3 +91,45 @@ test('robots matches HTML indexing state; sitemap includes all canonical pages a
   );
   assert.equal(error('link[rel="canonical"]').length, 0);
 });
+
+for (const locale of locales) {
+  test(`${locale}: ecosystem availability, factual structured data and social images`, async () => {
+    const $ = await documentAt(pagePath(locale));
+    assert.equal($('html').attr('itemtype'), 'https://schema.org/WebSite');
+    assert.equal($('meta[itemprop="inLanguage"]').attr('content'), locale);
+    assert.equal(
+      $('h1').text(),
+      locale === 'pt-BR'
+        ? 'A empresa além da cotação.'
+        : 'The company beyond the stock price.',
+    );
+    assert.equal($('.product').length, 6);
+    assert.equal($('.product .stage').length, 6);
+    assert.equal($('.architecture-channels a').length, 6);
+    assert.match(
+      $('.demo-disclaimer').text(),
+      locale === 'pt-BR'
+        ? /Nenhum monitoramento foi configurado/
+        : /No monitor has been configured/,
+    );
+    assert.equal(
+      $('a[href*="apps.apple.com"],a[href*="api-key"],form,iframe').length,
+      0,
+    );
+    assert.equal($('[style]').length, 0);
+    assert.equal($('.signature-preview').length, 2);
+    for (const image of $(
+      'meta[property="og:image"],meta[name="twitter:image"]',
+    ).toArray()) {
+      const url = new URL($(image).attr('content'));
+      const bytes = await readFile(new URL(url.pathname.slice(1), root));
+      assert.ok(bytes.length > 1000);
+      assert.equal(bytes.readUInt32BE(16), 1200);
+      assert.equal(bytes.readUInt32BE(20), 630);
+    }
+    assert.equal(
+      $('meta[property="og:image:alt"]').attr('content'),
+      $('h1').text(),
+    );
+  });
+}
