@@ -5,6 +5,10 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- TypeScript 7.0.2 para a verificação nativa, com o pacote oficial de
+  compatibilidade da API 6 para Astro check e ESLint; instalação limpa sem
+  ignorar peer dependencies e ambos os verificadores de tipos no gate existente.
+
 - Migração C2 v1.0.0: superfícies monocromáticas, azul seletivo, cores semânticas e ícones originais conforme o tema.
 - Snapshot canônico com SHA-256, geração CSS, contraste e detecção de drift.
 - Governança e checklist dos quatro repositórios; sem merge ou deploy.
