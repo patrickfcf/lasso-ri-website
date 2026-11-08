@@ -13,6 +13,18 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'], colorScheme: 'light' },
     },
     {
+      name: 'desktop-dark',
+      use: { ...devices['Desktop Chrome'], colorScheme: 'dark' },
+    },
+    {
+      name: 'mobile-light',
+      use: {
+        ...devices['iPhone 13'],
+        defaultBrowserType: 'chromium',
+        colorScheme: 'light',
+      },
+    },
+    {
       name: 'mobile-dark',
       use: {
         ...devices['iPhone 13'],

@@ -31,3 +31,11 @@ jobs:
           INDEX_SITE: 'true'
       - run: npm run deploy:check
       - run: npm audit --audit-level=high
+      - name: Preserve browser QA evidence
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
+        with:
+          name: website-browser-qa
+          path: test-results/
+          retention-days: 14
+          if-no-files-found: ignore

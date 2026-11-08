@@ -4,8 +4,9 @@
 [![Release](https://img.shields.io/github/v/release/patrickfcf/lasso-ri-website)](https://github.com/patrickfcf/lasso-ri-website/releases)
 [![Licença proprietária](https://img.shields.io/badge/licen%C3%A7a-propriet%C3%A1ria-lightgrey)](LICENSE)
 
-Website institucional do **Lasso RI**, um app nativo Apple para acompanhar relações
-com investidores de empresas brasileiras. Português brasileiro em `/`, inglês em
+Website institucional do **Lasso RI**, uma plataforma de inteligência de
+Relações com Investidores de empresas brasileiras. O ecossistema reúne a base dos
+apps Apple e a visão planejada de Core/API, MCP, Intelligence, portal e webhooks. Português brasileiro em `/`, inglês em
 `/en/`. Domínio definido pelo proprietário: **https://lassori.app**. Contato:
 **support@lassori.app**.
 
@@ -47,7 +48,7 @@ preview nessa porta antes de executá-los. Em Linux, instale o navegador com
 ## Estrutura
 
 ```text
-src/components/     Home e artigo compartilhados
+src/components/     Home, Signature, arquitetura e artigo compartilhados
 src/content/        Conteúdo tipado, completo por idioma
 src/layouts/        Navegação, rodapé e metadados
 src/lib/            Contratos de URLs e rotas
@@ -78,9 +79,23 @@ alternativa não indexável. A caixa de e-mail deve ser validada separadamente.
 
 ## Documentação
 
+- [Descoberta do ecossistema](docs/ecosystem-discovery.md)
 - [Índice](docs/README.md), [arquitetura](docs/architecture.md) e [design](docs/design.md)
 - [Desenvolvimento e ambiente](docs/development.md), [testes](docs/testing.md)
 - [Publicação e recuperação](docs/deployment.md), [releases](docs/releases.md)
 - [Comparação de padrões e evidências](docs/repository-audit.md)
 - [Contribuição](CONTRIBUTING.md), [agentes](AGENTS.md), [segurança](SECURITY.md)
 - [Changelog](CHANGELOG.md) e [licença proprietária](LICENSE)
+
+## Ecossistema e C2
+
+A empresa além da cotação. A identidade ativa é C2 — Monochrome + Signature Accent;
+Richmond Ink é histórica. Consulte [design canônico e tokens](docs/design.md)
+e a governança dos quatro repositórios ali vinculada. Avalie contratos, docs e
+mensagens públicas em Apple/backend/MCP/website; revisão não obriga editar todos.
+[Apple Apps](https://github.com/patrickfcf/lasso-ri),
+[Backend](https://github.com/patrickfcf/lasso-ri-backend) e
+[MCP](https://github.com/patrickfcf/lasso-ri-mcp) compartilham a arquitetura planejada.
+[Platform Linear](https://linear.app/luneta/project/lasso-ri-platform-and-ai-ecosystem-68609d2fecc1)
+e [Apple Linear](https://linear.app/luneta/project/lasso-ri-apple-apps-signature-redesign-2dc05903995f)
+coordenam dependências. Core/API/MCP/Intelligence/portal/webhooks continuam planejados.

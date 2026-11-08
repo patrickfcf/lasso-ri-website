@@ -1,0 +1,80 @@
+---
+import { home } from '../content/home';
+import type { Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+}
+const { locale } = Astro.props;
+const t = home[locale];
+---
+
+<div class="architecture" aria-describedby="architecture-note">
+  <div class="source-layer">
+    <p class="layer-label">{t.sourceTitle}</p>
+    <ul>
+      {t.sources.map((source) => (
+        <li>{source}</li>
+      ))}
+    </ul>
+  </div>
+  <div class="flow-connector" aria-hidden="true">
+    <span>↓</span>
+  </div>
+  <div class="foundation-layers">
+    <details class="architecture-layer core-layer">
+      <summary>
+        <span class="layer-symbol" aria-hidden="true">
+          ≋
+        </span>
+        <span>
+          <strong>Lasso RI Core</strong>
+          <span>{t.coreText}</span>
+        </span>
+        <span class="layer-expand">
+          <span>{t.inspect}</span>
+          <b aria-hidden="true">+</b>
+        </span>
+      </summary>
+      <p>{t.coreDetail}</p>
+    </details>
+    <div class="flow-connector" aria-hidden="true">
+      <span>↓</span>
+    </div>
+    <details class="architecture-layer api-layer">
+      <summary>
+        <span class="layer-symbol" aria-hidden="true">
+          {'{ }'}
+        </span>
+        <span>
+          <strong>Lasso RI API</strong>
+          <span>{t.apiText}</span>
+        </span>
+        <span class="layer-expand">
+          <span>REST / OpenAPI</span>
+          <b aria-hidden="true">+</b>
+        </span>
+      </summary>
+      <p>{t.apiDetail}</p>
+    </details>
+  </div>
+  <div class="channel-branches" aria-hidden="true">
+    <span>↓</span>
+  </div>
+  <ul class="architecture-channels">
+    {t.products.map((product) => (
+      <li>
+        <a href={`#${product.id}`}>
+          <span aria-hidden="true">{product.symbol}</span>
+          <strong>{product.name}</strong>
+          <small>{product.stage}</small>
+          <span class="channel-arrow" aria-hidden="true">
+            ↗
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</div>
+<p class="note architecture-note" id="architecture-note">
+  {t.architectureNote}
+</p>

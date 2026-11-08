@@ -18,10 +18,11 @@
     "test:build": "node --test test/build/*.test.mjs",
     "test:e2e": "playwright test",
     "check:repository": "node scripts/check-repository.mjs",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run check:repository && npm run build && npm run test:build && npm run test:e2e",
+    "verify": "npm run check:tokens && npm run format:check && npm run lint && npm run typecheck && npm test && npm run check:repository && npm run build && npm run test:build && npm run test:e2e",
     "preview:cloudflare": "wrangler dev --ip 127.0.0.1 --port 8787",
     "deploy:check": "wrangler deploy --dry-run",
-    "deploy": "npm run build && npm run test:build && wrangler deploy"
+    "deploy": "npm run build && npm run test:build && wrangler deploy",
+    "check:tokens": "node scripts/c2-tokens.mjs --check"
   },
   "overrides": {
     "undici@^7.0.0": "^7.30.1"
