@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import { Image, getImage } from 'astro:assets';
+import brandIcon from '../../public/assets/lasso-icon.png';
 import { copy, type Locale } from '../content/site';
 import { pagePath } from '../lib/site.mjs';
 interface Props {
@@ -17,32 +19,70 @@ const {
   noindex = false,
 } = Astro.props;
 const t = copy[locale];
+const favicon = await getImage({
+  src: brandIcon,
+  width: 32,
+  height: 32,
+  format: 'png',
+});
+const touchIcon = await getImage({
+  src: brandIcon,
+  width: 180,
+  height: 180,
+  format: 'png',
+});
 const otherLocale = locale === 'pt-BR' ? 'en' : 'pt-BR';
 const canonical = Astro.site
   ? new URL(pagePath(locale, page), Astro.site)
   : undefined;
+const socialImage = Astro.site
+  ? new URL(`/assets/og-${locale === 'pt-BR' ? 'pt' : 'en'}.png`, Astro.site)
+  : undefined;
 const allowIndex = import.meta.env.INDEX_SITE === 'true' && !noindex;
+const navigation =
+  locale === 'pt-BR'
+    ? [
+        ['Ecossistema', 'ecosystem'],
+        ['Apple Apps', 'apple'],
+        ['Intelligence', 'intelligence'],
+        ['Developers', 'platform'],
+      ]
+    : [
+        ['Ecosystem', 'ecosystem'],
+        ['Apple Apps', 'apple'],
+        ['Intelligence', 'intelligence'],
+        ['Developers', 'platform'],
+      ];
 const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
 ---
 
 <!doctype html>
-<html lang={locale}>
+<html
+  lang={locale}
+  itemscope
+  itemtype={
+    page === 'home'
+      ? 'https://schema.org/WebSite'
+      : 'https://schema.org/WebPage'
+  }
+>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title itemprop="name">{title}</title>
+    <meta itemprop="inLanguage" content={locale} />
+    <meta name="description" itemprop="description" content={description} />
     <meta
       name="robots"
       content={allowIndex ? 'index, follow' : 'noindex, nofollow'}
     />
     <meta name="color-scheme" content="light dark" />
-    <meta name="theme-color" content="#0b3d91" />
-    <link rel="icon" type="image/png" href="/assets/lasso-icon.png" />
-    <link rel="apple-touch-icon" href="/assets/lasso-icon.png" />
+    <meta name="theme-color" content="#163c72" />
+    <link rel="icon" type="image/png" href={favicon.src} />
+    <link rel="apple-touch-icon" href={touchIcon.src} />
     {!noindex && canonical && (
       <>
-        <link rel="canonical" href={canonical} />
+        <link rel="canonical" itemprop="url" href={canonical} />
         <link
           rel="alternate"
           hreflang="pt-BR"
@@ -69,7 +109,20 @@ const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
       property="og:locale"
       content={locale === 'pt-BR' ? 'pt_BR' : 'en_US'}
     />
-    <meta name="twitter:card" content="summary" />
+    {socialImage && (
+      <>
+        <meta property="og:image" content={socialImage} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={t.headline} />
+      </>
+    )}
+    <meta
+      property="og:locale:alternate"
+      content={locale === 'pt-BR' ? 'en_US' : 'pt_BR'}
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    {socialImage && <meta name="twitter:image" content={socialImage} />}
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
   </head>
@@ -77,59 +130,122 @@ const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
     <a class="skip-link" href="#main">
       {t.skip}
     </a>
-    <header class="site-header wrap">
-      <a class="brand" href={pagePath(locale)} aria-label="Lasso RI">
-        <img src="/assets/lasso-icon.png" width="38" height="38" alt="" />
-        <span>
-          Lasso <span class="brand-ri">RI</span>
-        </span>
-      </a>
-      <nav
-        aria-label={
-          locale === 'pt-BR' ? 'Navegação principal' : 'Main navigation'
-        }
-      >
-        <a href={`${pagePath(locale)}#app`}>{t.nav[0]}</a>
-        <a
-          class="nav-detail"
-          href={pagePath(locale, 'how-we-build')}
-          aria-current={page === 'how-we-build' ? 'page' : undefined}
-        >
-          {t.nav[1]}
+    <header class="site-header">
+      <div class="header-inner wrap">
+        <a class="brand" href={pagePath(locale)} aria-label="Lasso RI">
+          <Image
+            src={brandIcon}
+            width={32}
+            height={32}
+            densities={[1, 2]}
+            format="webp"
+            alt=""
+            loading="eager"
+          />
+          <span>
+            Lasso <span class="brand-ri">RI</span>
+          </span>
         </a>
-        <a
-          href={pagePath(locale, 'support')}
-          aria-current={page === 'support' ? 'page' : undefined}
+        <nav
+          class="desktop-nav"
+          aria-label={
+            locale === 'pt-BR' ? 'Navegação principal' : 'Main navigation'
+          }
         >
-          {t.nav[2]}
-        </a>
-        <a
-          class="language-link"
-          data-language
-          href={pagePath(otherLocale, page)}
-          lang={otherLocale}
-          hreflang={otherLocale}
-        >
-          {t.otherLanguage}
-        </a>
-      </nav>
+          {navigation.map(([label, id]) => (
+            <a href={`${pagePath(locale)}#${id}`}>{label}</a>
+          ))}
+        </nav>
+        <div class="header-tools">
+          <details class="theme-picker">
+            <summary
+              aria-label={locale === 'pt-BR' ? 'Aparência' : 'Appearance'}
+            >
+              <span aria-hidden="true">◐</span>
+            </summary>
+            <fieldset>
+              <legend>{locale === 'pt-BR' ? 'Aparência' : 'Appearance'}</legend>
+              <label>
+                <input
+                  id="theme-system"
+                  type="radio"
+                  name="theme"
+                  value="system"
+                  checked
+                />
+                {locale === 'pt-BR' ? 'Sistema' : 'System'}
+              </label>
+              <label>
+                <input
+                  id="theme-light"
+                  type="radio"
+                  name="theme"
+                  value="light"
+                />
+                {locale === 'pt-BR' ? 'Claro' : 'Light'}
+              </label>
+              <label>
+                <input id="theme-dark" type="radio" name="theme" value="dark" />
+                {locale === 'pt-BR' ? 'Escuro' : 'Dark'}
+              </label>
+            </fieldset>
+          </details>
+          <a
+            class="language-link"
+            data-language
+            href={pagePath(otherLocale, page)}
+            lang={otherLocale}
+            hreflang={otherLocale}
+          >
+            {t.otherLanguage}
+          </a>
+          <details class="mobile-menu">
+            <summary>
+              Menu<span aria-hidden="true">+</span>
+            </summary>
+            <nav
+              aria-label={
+                locale === 'pt-BR' ? 'Navegação móvel' : 'Mobile navigation'
+              }
+            >
+              {navigation.map(([label, id]) => (
+                <a href={`${pagePath(locale)}#${id}`}>
+                  {label}
+                  <span aria-hidden="true">↗</span>
+                </a>
+              ))}
+              <a href={pagePath(locale, 'how-we-build')}>{t.nav[1]}</a>
+              <a href={pagePath(locale, 'support')}>{t.nav[2]}</a>
+            </nav>
+          </details>
+        </div>
+      </div>
     </header>
     <main id="main" tabindex="-1">
       <slot />
     </main>
     <footer class="site-footer wrap">
       <div class="footer-top">
-        <div>
+        <div class="footer-identity">
           <a class="footer-brand" href={pagePath(locale)}>
-            Lasso RI
+            Lasso <span>RI</span>
           </a>
           <p>{t.footer}</p>
+          <small>{t.eyebrow}</small>
         </div>
+        <nav aria-label={locale === 'pt-BR' ? 'Plataforma' : 'Platform'}>
+          <strong>{locale === 'pt-BR' ? 'Plataforma' : 'Platform'}</strong>
+          {navigation.map(([label, id]) => (
+            <a href={`${pagePath(locale)}#${id}`}>{label}</a>
+          ))}
+        </nav>
         <nav aria-label={locale === 'pt-BR' ? 'Informações' : 'Information'}>
+          <strong>Lasso RI</strong>
           {footerPages.map((key, i) => (
             <a href={pagePath(locale, key)}>{t.footerLinks[i]}</a>
           ))}
           <a href={pagePath(locale, 'how-we-build')}>{t.nav[1]}</a>
+          <a href={pagePath(locale, 'support')}>{t.nav[2]}</a>
         </nav>
       </div>
       <div class="footer-bottom">
@@ -140,6 +256,23 @@ const footerPages = ['privacy', 'terms', 'accessibility', 'roadmap'];
       </div>
     </footer>
     <script>
+      document
+        .querySelectorAll<HTMLAnchorElement>('.mobile-menu a')
+        .forEach((link) => {
+          link.addEventListener('click', () => {
+            const menu = link.closest('details');
+            if (menu) menu.open = false;
+          });
+        });
+      document.addEventListener('keydown', (event) => {
+        if (event.key !== 'Escape') return;
+        document
+          .querySelectorAll<HTMLDetailsElement>('.header-tools details[open]')
+          .forEach((details) => {
+            details.open = false;
+            details.querySelector('summary')?.focus();
+          });
+      });
       // Explicit navigation only: no browser-language redirect or persisted preference.
       document
         .querySelectorAll<HTMLAnchorElement>('[data-language]')

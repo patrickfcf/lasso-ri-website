@@ -13,55 +13,16 @@ export const copy = {
     language: 'Português',
     otherLanguage: 'English',
     skip: 'Ir para o conteúdo',
-    nav: ['O app', 'Como construímos', 'Suporte'],
-    title: 'Lasso RI | Acompanhe empresas, com contexto',
+    nav: ['Ecossistema', 'Como construímos', 'Suporte'],
+    title: 'Lasso RI | A empresa além da cotação.',
     description:
-      'Conheça o Lasso RI: um app nativo Apple para organizar comunicados, documentos e eventos de relações com investidores. Em desenvolvimento, com dados de exemplo.',
-    eyebrow: 'Relações com investidores, no seu ritmo',
-    headline: 'Mais contexto. Menos ruído.',
+      'Plataforma de inteligência de Relações com Investidores. Conheça os apps Apple e a visão para Core, API, MCP e Intelligence. Ecossistema em desenvolvimento.',
+    eyebrow: 'Inteligência de Relações com Investidores',
+    headline: 'A empresa além da cotação.',
     intro:
-      'Comunicados, documentos e eventos das empresas que você acompanha. Um espaço para olhar além da cotação.',
-    cta: 'Conheça o app',
-    secondary: 'Veja o que vem a seguir',
-    artwork: 'Ícone original do Lasso RI',
-    statusTitle: 'Um produto em construção, com os pés no chão.',
-    status:
-      'O app já tem uma base funcional com dados de exemplo. Ainda não há feed ao vivo, conta, assinatura ou distribuição pública anunciada.',
-    featureTitle: 'A empresa por inteiro.',
-    featureIntro:
-      'Da sua lista de interesse ao próximo evento, informações de RI organizadas para uma leitura com calma.',
-    features: [
-      [
-        'Sua lista, seu foco',
-        'Acompanhe as empresas de seu interesse em uma watchlist salva no dispositivo.',
-        'Watchlist',
-      ],
-      [
-        'Documentos com contexto',
-        'Explore fatos relevantes, comunicados e materiais de resultados no catálogo de demonstração.',
-        'Documentos',
-      ],
-      [
-        'Datas que merecem atenção',
-        'Consulte eventos corporativos, dividendos e JCP, distinguindo cada tipo de informação.',
-        'Calendário',
-      ],
-      [
-        'Uma visão do dia',
-        'Veja as atualizações agrupadas e identifique o que é novo desde a última visita.',
-        'Hoje',
-      ],
-    ],
-    platformTitle: 'Em casa nos seus dispositivos Apple.',
-    platformText:
-      'Uma interface nativa, pensada para cada tela. No iPhone, listas claras. No iPad e Mac, espaço para explorar. No Watch e na TV, visões rápidas.',
-    platforms: ['iPhone e iPad', 'Mac', 'Apple Watch', 'Apple TV'],
-    platformNote:
-      'Base atual para sistemas Apple 26 ou posteriores. Os dados locais do app, Watch e extensões ainda são independentes.',
-    privacyTitle: 'Sua lista fica com você.',
-    privacyText:
-      'Na versão atual, as preferências ficam no dispositivo. Sem conta, publicidade ou analytics no app. Os exemplos vêm incluídos na instalação.',
-    privacyLink: 'Entenda a privacidade',
+      'Comunicados, proventos e próximos eventos. O contexto das empresas que você acompanha, no seu ritmo.',
+    cta: 'Conheça o ecossistema',
+    secondary: 'Explore a plataforma',
     faqTitle: 'Antes de começar',
     faqs: [
       [
@@ -81,7 +42,7 @@ export const copy = {
         'Não há login na versão atual. A lista de empresas acompanhadas e a última visita são armazenadas localmente.',
       ],
     ],
-    footer: 'Um olhar mais atento para as empresas.',
+    footer: 'A empresa além da cotação.',
     footerLinks: ['Privacidade', 'Termos', 'Acessibilidade', 'Próximos passos'],
     rights: 'Todos os direitos reservados.',
     back: 'Voltar ao início',
@@ -96,55 +57,16 @@ export const copy = {
     language: 'English',
     otherLanguage: 'Português',
     skip: 'Skip to content',
-    nav: ['The app', 'How we build', 'Support'],
-    title: 'Lasso RI | Follow companies, with context',
+    nav: ['Ecosystem', 'How we build', 'Support'],
+    title: 'Lasso RI | The company beyond the stock price.',
     description:
-      'Meet Lasso RI: a native Apple app for organizing Brazilian investor relations announcements, documents and events. In development with sample data.',
-    eyebrow: 'Investor relations, at your pace',
-    headline: 'More context. Less noise.',
+      'An investor relations intelligence platform for Brazilian companies. Explore Apple apps and the vision for Core, API, MCP and Intelligence. An ecosystem in development.',
+    eyebrow: 'Investor relations intelligence',
+    headline: 'The company beyond the stock price.',
     intro:
-      'Announcements, documents and events from the companies you follow. A place to look beyond the share price.',
-    cta: 'Explore the app',
-    secondary: 'See what comes next',
-    artwork: 'Original Lasso RI app icon',
-    statusTitle: 'A work in progress, grounded in reality.',
-    status:
-      'The app has a working foundation with sample data. There is no live feed, account, subscription or announced public distribution yet.',
-    featureTitle: 'See the whole company.',
-    featureIntro:
-      'From your watchlist to the next event, investor relations information organized for a considered read.',
-    features: [
-      [
-        'Your list, your focus',
-        'Follow companies you are interested in with a watchlist saved on your device.',
-        'Watchlist',
-      ],
-      [
-        'Documents in context',
-        'Explore material facts, shareholder notices and earnings materials in the demo catalog.',
-        'Documents',
-      ],
-      [
-        'Dates worth following',
-        'Browse corporate events, dividends and interest on equity (JCP), with distinct information types.',
-        'Calendar',
-      ],
-      [
-        'A view of the day',
-        'Read grouped updates and identify what is new since your last visit.',
-        'Today',
-      ],
-    ],
-    platformTitle: 'At home on your Apple devices.',
-    platformText:
-      'A native interface designed for each screen. Clear lists on iPhone. Room to explore on iPad and Mac. Glanceable views on Watch and TV.',
-    platforms: ['iPhone and iPad', 'Mac', 'Apple Watch', 'Apple TV'],
-    platformNote:
-      'The current foundation targets Apple operating systems 26 or later. The app, Watch and extensions still have independent local data.',
-    privacyTitle: 'Your list stays with you.',
-    privacyText:
-      'In the current version, preferences stay on your device. No account, advertising or analytics in the app. Examples are bundled with the installation.',
-    privacyLink: 'Understand privacy',
+      'Announcements, distributions and upcoming events. The context behind the companies you follow, at your pace.',
+    cta: 'Discover the ecosystem',
+    secondary: 'Explore the platform',
     faqTitle: 'Before you begin',
     faqs: [
       [
@@ -164,7 +86,7 @@ export const copy = {
         'There is no login in the current version. Followed company identifiers and the last visit date are stored locally.',
       ],
     ],
-    footer: 'A closer look at the companies you follow.',
+    footer: 'The company beyond the stock price.',
     footerLinks: ['Privacy', 'Terms', 'Accessibility', 'Next steps'],
     rights: 'All rights reserved.',
     back: 'Back to home',
@@ -206,7 +128,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
     privacy: {
       title: 'Privacidade, com clareza.',
       intro:
-        'Esta página descreve o site e a versão atual do app com dados de exemplo. Revisada em 23 de setembro de 2026.',
+        'Esta página descreve o site e a versão atual do app com dados de exemplo. Revisada em 8 de novembro de 2026.',
       sections: [
         {
           title: 'Ao visitar este site',
@@ -271,7 +193,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         },
         {
           title: 'Suas preferências',
-          text: 'O layout se adapta a telas menores e ao aumento de texto. O tema acompanha a preferência clara ou escura do sistema. Não há animação automática ou conteúdo que dependa apenas de cor.',
+          text: 'O layout se adapta a telas menores e ao aumento de texto. O tema pode seguir o sistema ou ser escolhido como claro ou escuro, sem armazenar a escolha. Animações sutis respeitam a preferência por movimento reduzido. A informação não depende apenas de cor.',
         },
         {
           title: 'Limites e relatos',
@@ -286,6 +208,14 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         {
           title: 'A base de hoje',
           text: 'Watchlist, catálogo de empresas, documentos e calendário com exemplos. Interfaces nativas para dispositivos Apple, preferências locais e uma base de testes automatizados.',
+        },
+        {
+          title: 'Uma infraestrutura compartilhada',
+          text: 'Core e API são as próximas bases planejadas. A ingestão de fontes oficiais, direitos de uso, proveniência, contratos e segurança precedem as integrações. A aprovação de arquitetura não significa disponibilidade de serviços.',
+        },
+        {
+          title: 'A visão do ecossistema',
+          text: 'MCP para clientes de IA compatíveis, Intelligence com monitoramentos e resumos, portal web e webhooks são experiências planejadas. Não há datas, acesso antecipado, planos comerciais ou integrações públicas anunciadas.',
         },
         {
           title: 'Antes de uma distribuição pública',
@@ -303,8 +233,20 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         'Poucas peças, responsabilidades definidas e respeito pelo estágio real do produto.',
       sections: [
         {
-          title: 'Um app nativo',
-          text: 'O Lasso RI é construído em SwiftUI, com modelos de domínio separados das fontes de dados. A versão atual usa repositórios de exemplo e armazenamento local, sem dependências externas de aplicação.',
+          title: 'Uma plataforma, diferentes interfaces',
+          text: 'O ecossistema está sendo desenhado em torno de uma base compartilhada: fontes autorizadas → Core → API → apps Apple, MCP, web e automações. A base SwiftUI existente usa dados de exemplo e armazenamento local. Core, API e integrações ainda não estão disponíveis.',
+        },
+        {
+          title: 'Core e API: contratos antes das integrações',
+          text: 'O Core deverá cuidar de ingestão, normalização, deduplicação e proveniência. A API REST/OpenAPI deverá expor dados e serviços com autenticação e permissões próprias. Postgres e Workers são a direção de infraestrutura aprovada, ainda sem serviço provisionado. Não há endpoint público, documentação de API operacional ou emissão de chaves.',
+        },
+        {
+          title: 'MCP, Intelligence e webhooks',
+          text: 'O MCP será um adapter da API para clientes compatíveis, sem duplicar regras de negócio. Monitores, resumos e webhooks dependerão dos dados oficiais, das permissões e da execução no backend. A demonstração deste site é ilustrativa e não configura ações reais.',
+        },
+        {
+          title: 'Identidade e dados privados',
+          text: 'A direção aprovada prevê uma conta Lasso compartilhada entre apps, futuro portal e MCP, preservando uso local sem login. Conta, sincronização e concessões por cliente ainda precisam ser implementadas; não existe login neste website.',
         },
         {
           title: 'Um site leve',
@@ -344,7 +286,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
     privacy: {
       title: 'Privacy, explained.',
       intro:
-        'This page describes the website and the current sample-data app. Reviewed on September 23, 2026.',
+        'This page describes the website and the current sample-data app. Reviewed on November 8, 2026.',
       sections: [
         {
           title: 'When you visit this site',
@@ -410,7 +352,7 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         },
         {
           title: 'Your preferences',
-          text: 'The layout adapts to smaller screens and enlarged text. The theme follows your system’s light or dark preference. There is no automatic animation or content that relies only on color.',
+          text: 'The layout adapts to smaller screens and enlarged text. The theme can follow your system or be set to light or dark without storing the choice. Subtle animations respect reduced motion. Information does not rely only on color.',
         },
         {
           title: 'Limitations and reports',
@@ -425,6 +367,14 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         {
           title: 'Today’s foundation',
           text: 'A watchlist, company catalog, documents and calendar with examples. Native interfaces for Apple devices, local preferences and a foundation of automated tests.',
+        },
+        {
+          title: 'A shared infrastructure',
+          text: 'Core and API are the next planned foundations. Official source ingestion, usage rights, provenance, contracts and security precede integrations. Architecture approval does not imply services are available.',
+        },
+        {
+          title: 'The ecosystem vision',
+          text: 'MCP for compatible AI clients, Intelligence with monitors and summaries, a web portal and webhooks are planned experiences. No dates, early access, commercial plans or public integrations have been announced.',
         },
         {
           title: 'Before public distribution',
@@ -442,8 +392,20 @@ export const articles: Record<Locale, Record<PageKey, Article>> = {
         'A few well-defined parts and respect for the product’s actual stage.',
       sections: [
         {
-          title: 'A native app',
-          text: 'Lasso RI uses SwiftUI, with domain models separated from data sources. The current version uses sample repositories and local storage, without third-party application dependencies.',
+          title: 'One platform, different interfaces',
+          text: 'The ecosystem is being designed around a shared foundation: authorized sources → Core → API → Apple apps, MCP, web and automations. The existing SwiftUI foundation uses sample data and local storage. Core, API and integrations are not available yet.',
+        },
+        {
+          title: 'Core and API: contracts before integrations',
+          text: 'Core is intended to handle ingestion, normalization, deduplication and provenance. The REST/OpenAPI API is intended to expose data and services with authentication and permissions. Postgres and Workers are the approved infrastructure direction, with no service provisioned. There is no public endpoint, operational API reference or API key issuance.',
+        },
+        {
+          title: 'MCP, Intelligence and webhooks',
+          text: 'MCP will be an API adapter for compatible clients, without duplicating business rules. Monitors, summaries and webhooks will depend on official data, permissions and backend execution. This website’s demonstration is illustrative and does not configure real actions.',
+        },
+        {
+          title: 'Identity and private data',
+          text: 'The approved direction is a shared Lasso account across apps, the future portal and MCP, preserving local use without login. Accounts, synchronization and per-client grants still require implementation; there is no login on this website.',
         },
         {
           title: 'A lightweight website',

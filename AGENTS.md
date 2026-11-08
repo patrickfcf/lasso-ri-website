@@ -7,8 +7,9 @@
 - Use Node 22 e npm com package-lock.json. Leia README e docs/architecture.md.
 - O app usa dados de exemplo. Não invente disponibilidade, métricas, depoimentos,
   preços, feed ao vivo, autenticação ou integrações. Valide afirmações no produto.
-- Preserve o ícone original, azul-marinho #0b3d91, azul escuro #7aa7ff, fontes de
-  sistema e hierarquia editorial. A referência estrutural não define a marca.
+- Preserve o ícone original, fontes de sistema e hierarquia editorial. Use a
+  Richmond Ink aprovada na CURSI-105 (#163C72/#9EBFF2), conforme docs/design.md.
+  A referência estrutural não define a marca; os azuis anteriores são históricos.
 
 ## Arquitetura e conteúdo
 

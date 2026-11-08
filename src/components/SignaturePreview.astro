@@ -1,0 +1,158 @@
+---
+import type { Locale } from '../content/site';
+interface Props {
+  locale: Locale;
+  compact?: boolean;
+}
+const { locale, compact = false } = Astro.props;
+const t =
+  locale === 'pt-BR'
+    ? {
+        caption: 'Lasso Signature / interface conceitual com dados sintéticos',
+        demo: 'Demonstração',
+        radar: 'Seu radar.',
+        updates: 'Novidades das suas empresas',
+        now: 'Agora',
+        week: 'Próximos 7 dias',
+        payment: 'Próximo pagamento',
+        company: 'Companhia Aurora',
+        dividend: 'Dividendo',
+        perShare: 'por ação / exemplo',
+        dates: 'Anúncio e datas',
+        announcement: 'Anúncio',
+        entitlement: 'Data-com',
+        pay: 'Pagamento',
+        exampleDate: 'Data de exemplo',
+        agenda: 'Sua semana',
+        event: 'Apresentação de resultados',
+        eventNote: 'Companhia Horizonte / evento ilustrativo',
+        changed: 'O que mudou',
+        material: 'Fato relevante',
+        document: 'Novo documento de demonstração',
+        jcp: 'Juros sobre capital próprio',
+        jcpNote: 'Companhia Aurora / exemplo de JCP',
+        following: 'Suas empresas',
+        note: 'Empresas, valores e eventos fictícios. Não são dados financeiros atuais.',
+      }
+    : {
+        caption: 'Lasso Signature / concept interface with synthetic data',
+        demo: 'Demonstration',
+        radar: 'Your radar.',
+        updates: 'Updates from your companies',
+        now: 'Now',
+        week: 'Next 7 days',
+        payment: 'Next payment',
+        company: 'Aurora Company',
+        dividend: 'Dividend',
+        perShare: 'per share / sample',
+        dates: 'Announcement and dates',
+        announcement: 'Announcement',
+        entitlement: 'Entitlement',
+        pay: 'Payment',
+        exampleDate: 'Sample date',
+        agenda: 'Your week',
+        event: 'Earnings presentation',
+        eventNote: 'Horizonte Company / illustrative event',
+        changed: 'What changed',
+        material: 'Material fact',
+        document: 'New demonstration document',
+        jcp: 'Interest on equity',
+        jcpNote: 'Aurora Company / JCP example',
+        following: 'Your companies',
+        note: 'Fictional companies, amounts and events. Not current financial data.',
+      };
+---
+
+<figure class:list={['signature-preview', { compact }]}>
+  <div class="signature-screen">
+    <div class="preview-brand">
+      <span>
+        Lasso <b>RI</b>
+      </span>
+      <span class="demo-tag">{t.demo}</span>
+    </div>
+    <div class="radar-header">
+      <p>{t.updates}</p>
+      <p class="radar-title">{t.radar}</p>
+    </div>
+    <div class="period-labels" aria-hidden="true">
+      <span>{t.now}</span>
+      <span>{t.week}</span>
+    </div>
+    <div class="payment-preview">
+      <p class="preview-meta">{t.payment}</p>
+      <div class="company-identity">
+        <span class="company-mark" aria-hidden="true">
+          A
+        </span>
+        <div>
+          <strong>{t.company}</strong>
+          <p>DEMO3 / {t.dividend}</p>
+        </div>
+      </div>
+      <p class="preview-value">R$ 0,42</p>
+      <p class="preview-meta">{t.perShare}</p>
+      {compact ? (
+        <p class="preview-dates-label">
+          {t.dates} <span aria-hidden="true">↓</span>
+        </p>
+      ) : (
+        <details class="payment-dates">
+          <summary>{t.dates}</summary>
+          <dl>
+            {[t.announcement, t.entitlement, t.pay].map((label) => (
+              <div>
+                <dt>{label}</dt>
+                <dd>{t.exampleDate}</dd>
+              </div>
+            ))}
+          </dl>
+        </details>
+      )}
+    </div>
+    <p class="preview-heading">{t.agenda}</p>
+    <div class="week-strip" aria-hidden="true">
+      {(locale === 'pt-BR'
+        ? ['S', 'T', 'Q', 'Q', 'S', 'S', 'D']
+        : ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+      ).map((day, i) => (
+        <span class:list={{ selected: i === 1 }}>
+          <small>{day}</small>
+          <b>{12 + i}</b>
+          <span>·</span>
+        </span>
+      ))}
+    </div>
+    <div class="agenda-preview">
+      <span class="event-mark" aria-hidden="true">
+        ↗
+      </span>
+      <div>
+        <strong>{t.event}</strong>
+        <p>{t.eventNote}</p>
+      </div>
+    </div>
+    {!compact && (
+      <>
+        <p class="preview-heading">{t.changed}</p>
+        <div class="update-preview">
+          <small>{t.material}</small>
+          <strong>{t.document}</strong>
+          <p>DEMO3 / {t.demo}</p>
+        </div>
+        <div class="update-preview">
+          <small>{t.jcp}</small>
+          <strong>{t.jcpNote}</strong>
+          <p>{t.demo}</p>
+        </div>
+        <p class="preview-heading">{t.following}</p>
+        <div class="ticker-list">
+          <span>DEMO3</span>
+          <span>EXMP4</span>
+        </div>
+      </>
+    )}
+    <p class="preview-disclaimer">{t.note}</p>
+  </div>
+  <figcaption>{t.caption}</figcaption>
+</figure>

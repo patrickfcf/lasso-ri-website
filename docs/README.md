@@ -1,6 +1,7 @@
 # Documentação de engenharia
 
 - [Arquitetura](architecture.md): limites, rotas, integrações e dados
+- [Descoberta do ecossistema](ecosystem-discovery.md): evidências, decisões e matriz de estágio
 - [Design](design.md): identidade, tokens, responsividade e acessibilidade
 - [Desenvolvimento](development.md): ambiente, comandos e diagnóstico
 - [Testes](testing.md): cobertura, execução e limites

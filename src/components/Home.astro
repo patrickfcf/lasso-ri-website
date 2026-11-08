@@ -1,12 +1,16 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import SignaturePreview from './SignaturePreview.astro';
+import PlatformArchitecture from './PlatformArchitecture.astro';
 import { copy, type Locale } from '../content/site';
+import { home } from '../content/home';
 import { pagePath } from '../lib/site.mjs';
 interface Props {
   locale: Locale;
 }
 const { locale } = Astro.props;
 const t = copy[locale];
+const h = home[locale];
 ---
 
 <BaseLayout locale={locale} title={t.title} description={t.description}>
@@ -16,71 +20,261 @@ const t = copy[locale];
       <h1 id="hero-title">{t.headline}</h1>
       <p class="hero-intro">{t.intro}</p>
       <div class="hero-actions">
-        <a class="button" href="#app">
+        <a class="button" href="#ecosystem">
           {t.cta}
           <span aria-hidden="true">↗</span>
         </a>
-        <a class="text-link" href={pagePath(locale, 'roadmap')}>
+        <a class="text-link" href="#platform">
           {t.secondary}
+          <span aria-hidden="true">↓</span>
         </a>
       </div>
     </div>
-    <figure class="brand-art">
-      <picture>
-        <source
-          srcset="/assets/lasso-icon-dark.png"
-          media="(prefers-color-scheme: dark)"
-        />
-        <img
-          src="/assets/lasso-icon.png"
-          width="1024"
-          height="1024"
-          alt={t.artwork}
-          fetchpriority="high"
-        />
-      </picture>
-    </figure>
+    <div class="hero-visual">
+      <div class="orbit orbit-one" aria-hidden="true"></div>
+      <div class="orbit orbit-two" aria-hidden="true"></div>
+      <div class="hero-signal">
+        <span class="signal-mark" aria-hidden="true">
+          ✳
+        </span>
+        <span>
+          Lasso RI <b>Core</b>
+        </span>
+        <small>
+          {locale === 'pt-BR' ? 'Visão do ecossistema' : 'Ecosystem vision'}
+        </small>
+      </div>
+      <SignaturePreview locale={locale} compact />
+      <div class="hero-channels">
+        <a href="#apple">
+          <span aria-hidden="true">⌘</span>Apple Apps
+        </a>
+        <a href="#mcp">
+          <span aria-hidden="true">⌁</span>MCP
+        </a>
+        <a href="#intelligence">
+          <span aria-hidden="true">✳</span>Intelligence
+        </a>
+        <a href="#web">
+          <span aria-hidden="true">⊞</span>Web
+        </a>
+      </div>
+    </div>
   </section>
-  <aside class="status wrap" aria-labelledby="status-title">
-    <h2 id="status-title">{t.statusTitle}</h2>
-    <p>{t.status}</p>
-  </aside>
+  <div class="availability-bar">
+    <div class="wrap">
+      <p>
+        {locale === 'pt-BR'
+          ? 'Um ecossistema em desenvolvimento.'
+          : 'An ecosystem in development.'}
+      </p>
+      <a href="#evolution">
+        {locale === 'pt-BR'
+          ? 'Conheça o estágio de cada experiência'
+          : 'See where each experience stands'}
+        <span aria-hidden="true">↗</span>
+      </a>
+    </div>
+  </div>
   <section
-    id="app"
-    class="features wrap section"
-    aria-labelledby="features-title"
+    class="wrap section context-section"
+    id="context"
+    aria-labelledby="context-title"
   >
-    <h2 id="features-title">{t.featureTitle}</h2>
-    <p class="section-intro">{t.featureIntro}</p>
-    <div class="feature-grid">
-      {t.features.map(([title, body, label]) => (
-        <article class="feature">
-          <span class="feature-label">{label}</span>
+    <div class="section-heading">
+      <h2 id="context-title">{h.contextTitle}</h2>
+      <p>{h.contextIntro}</p>
+    </div>
+    <div class="context-grid">
+      {h.contexts.map(([title, body, trail], i) => (
+        <article class={`context-item context-${i}`}>
+          <div class="context-illustration" aria-hidden="true">
+            {i === 0 ? (
+              <div class="document-stack">
+                <span></span>
+                <span></span>
+                <span>
+                  <b>RI</b>
+                  <i></i>
+                  <i></i>
+                  <i></i>
+                </span>
+              </div>
+            ) : i === 1 ? (
+              <div class="date-composition">
+                <span>12</span>
+                <span>18</span>
+                <span>24</span>
+              </div>
+            ) : (
+              <div class="history-composition">
+                <span>A</span>
+                <i></i>
+                <span>H</span>
+                <i></i>
+                <span>L</span>
+              </div>
+            )}
+          </div>
           <h3>{title}</h3>
           <p>{body}</p>
+          <small>{trail}</small>
         </article>
       ))}
     </div>
   </section>
-  <section class="platform-section" aria-labelledby="platform-title">
-    <div class="wrap section">
-      <h2 id="platform-title">{t.platformTitle}</h2>
-      <p class="section-intro">{t.platformText}</p>
-      <ul class="platforms">
-        {t.platforms.map((platform) => (
-          <li>{platform}</li>
+  <section
+    class="ecosystem-section section"
+    id="ecosystem"
+    aria-labelledby="ecosystem-title"
+  >
+    <div class="wrap">
+      <div class="section-heading">
+        <p class="eyebrow">Lasso RI Everywhere</p>
+        <h2 id="ecosystem-title">{h.ecosystemTitle}</h2>
+        <p>{h.ecosystemIntro}</p>
+      </div>
+      <div class="ecosystem-grid">
+        {h.products.map((product, i) => (
+          <article class:list={['product', `product-${i}`]} id={product.id}>
+            <div class="product-top">
+              <span class="product-symbol" aria-hidden="true">
+                {product.symbol}
+              </span>
+              <span class="stage">{product.stage}</span>
+            </div>
+            <h3>{product.name}</h3>
+            <p class="product-description">{product.description}</p>
+            <p class="product-detail">{product.detail}</p>
+            {i === 0 ? (
+              <a class="text-link" href="#signature">
+                {locale === 'pt-BR'
+                  ? 'Conheça Lasso Signature'
+                  : 'Explore Lasso Signature'}
+                <span aria-hidden="true">↗</span>
+              </a>
+            ) : i === 2 ? (
+              <a class="text-link" href="#intelligence">
+                {locale === 'pt-BR'
+                  ? 'Explore o conceito'
+                  : 'Explore the concept'}
+                <span aria-hidden="true">↗</span>
+              </a>
+            ) : null}
+          </article>
         ))}
-      </ul>
-      <p class="note">{t.platformNote}</p>
+      </div>
     </div>
   </section>
-  <section class="privacy-section wrap section" aria-labelledby="privacy-title">
-    <h2 id="privacy-title">{t.privacyTitle}</h2>
-    <div>
-      <p>{t.privacyText}</p>
-      <a class="text-link" href={pagePath(locale, 'privacy')}>
-        {t.privacyLink}
-        <span aria-hidden="true"> ↗</span>
+  <section
+    class="wrap section intelligence-section"
+    id="intelligence"
+    aria-labelledby="intelligence-title"
+  >
+    <div class="section-heading">
+      <p class="eyebrow">Lasso RI Intelligence</p>
+      <h2 id="intelligence-title">{h.intelligenceTitle}</h2>
+      <p>{h.intelligenceIntro}</p>
+    </div>
+    <div class="intelligence-demo">
+      <div class="demo-topline">
+        <span class="demo-tag">{h.demoLabel}</span>
+        <span aria-hidden="true">✳</span>
+      </div>
+      <blockquote>{h.request}</blockquote>
+      <ol class="intelligence-flow">
+        {h.flow.map(([title, body]) => (
+          <li>
+            <span class="flow-point" aria-hidden="true"></span>
+            <strong>{title}</strong>
+            <p>{body}</p>
+          </li>
+        ))}
+      </ol>
+      <div class="summary-example">
+        <span class="summary-symbol" aria-hidden="true">
+          ↳
+        </span>
+        <div>
+          <h3>{h.responseTitle}</h3>
+          <p>{h.response}</p>
+        </div>
+      </div>
+      <p class="demo-disclaimer">{h.demoNote}</p>
+    </div>
+  </section>
+  <section
+    class="signature-section section"
+    id="app"
+    aria-labelledby="signature-title"
+  >
+    <div class="wrap signature-layout" id="signature">
+      <div class="signature-copy">
+        <p class="eyebrow">Lasso Signature</p>
+        <h2 id="signature-title">{h.signatureTitle}</h2>
+        <p class="section-intro">{h.signatureIntro}</p>
+        <div class="signature-features">
+          {h.signatureFeatures.map(([title, body]) => (
+            <div>
+              <h3>{title}</h3>
+              <p>{body}</p>
+            </div>
+          ))}
+        </div>
+        <p class="note">
+          {locale === 'pt-BR'
+            ? 'Interface conceitual baseada na direção C aprovada. O visual não representa uma versão distribuída.'
+            : 'Concept interface based on the approved C direction. This visual does not represent a distributed release.'}
+        </p>
+      </div>
+      <div class="signature-stage">
+        <span class="signature-watermark" aria-hidden="true">
+          RI
+        </span>
+        <SignaturePreview locale={locale} />
+      </div>
+    </div>
+  </section>
+  <section
+    class="wrap section platform-section"
+    id="platform"
+    aria-labelledby="platform-title"
+  >
+    <div class="section-heading">
+      <p class="eyebrow">
+        {locale === 'pt-BR' ? 'Feito como plataforma' : 'Built as a platform'}
+      </p>
+      <h2 id="platform-title">{h.architectureTitle}</h2>
+      <p>{h.architectureIntro}</p>
+    </div>
+    <PlatformArchitecture locale={locale} />
+    <a class="text-link" href={pagePath(locale, 'how-we-build')}>
+      {h.engineering}
+      <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+  <section
+    class="evolution-section section"
+    id="evolution"
+    aria-labelledby="evolution-title"
+  >
+    <div class="wrap">
+      <div class="section-heading">
+        <h2 id="evolution-title">{h.evolutionTitle}</h2>
+        <p>{h.evolutionIntro}</p>
+      </div>
+      <div class="evolution-grid">
+        {h.evolution.map(([label, title, body]) => (
+          <article>
+            <p class="evolution-label">{label}</p>
+            <h3>{title}</h3>
+            <p>{body}</p>
+          </article>
+        ))}
+      </div>
+      <a class="text-link" href={pagePath(locale, 'roadmap')}>
+        {h.roadmap}
+        <span aria-hidden="true">↗</span>
       </a>
     </div>
   </section>
