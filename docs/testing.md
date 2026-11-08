@@ -4,17 +4,17 @@
 integridade do repositório, build, testes do HTML e navegador. CI usa a mesma
 sequência e executa um segundo build indexável para validar a configuração pública.
 
-| Camada                | O que protege                                                                     |
-| --------------------- | --------------------------------------------------------------------------------- |
-| Node Test Runner      | URLs canônicas seguras, locale e contrato de caminhos                             |
-| Cheerio sobre dist    | 14 páginas, idiomas, um h1, links, assets, metadata e OG 1200×630                 |
-| Build SEO             | robots, sitemap, canonical, alternates, x-default, microdata e 404                |
-| Playwright + Wrangler | assets locais, CSP, redirects, status 404 e ausência de erros                     |
-| axe                   | WCAG A/AA até tags 2.2 em home PT/EN, suporte, privacidade e controles expandidos |
-| Navegação             | idioma com query/hash, FAQ, skip link, menu móvel, teclado e Escape               |
-| Sem JavaScript        | leitura, idioma, menu, Light/Dark/Sistema, datas e camadas Core/API               |
-| Adaptação             | 320/393/768/1920/2560 px, texto a 200% e movimento reduzido                       |
-| Estabilidade          | CLS laboratorial <0,1 e nenhuma requisição de recurso externo                     |
+| Camada                | O que protege                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------ |
+| Node Test Runner      | URLs canônicas seguras, locale e contrato de caminhos                                |
+| Cheerio sobre dist    | 14 páginas, idiomas, um h1, links, assets, metadata e OG 1200×630                    |
+| Build SEO             | robots, sitemap, canonical, alternates, x-default, microdata e 404                   |
+| Playwright + Wrangler | assets locais, CSP, redirects, status 404 e ausência de erros                        |
+| axe                   | WCAG A/AA até tags 2.2 em home PT/EN, suporte, privacidade e controles expandidos    |
+| Navegação             | idioma com query/hash, FAQ, skip link, menu móvel, teclado e Escape                  |
+| Sem JavaScript        | leitura, idioma, menu, Light/Dark/Sistema, datas e camadas Core/API                  |
+| Adaptação             | 320/393/768/1920/2560 px, texto a 200% sem sobreposição do hero e movimento reduzido |
+| Estabilidade          | CLS laboratorial <0,1 e nenhuma requisição de recurso externo                        |
 
 Playwright roda Chromium em desktop/claro, desktop/escuro, mobile/claro e
 mobile/escuro, com dois workers. Testes de screenshot geram homepage PT/EN e
@@ -69,10 +69,10 @@ executados. O pacote é estático, sem bindings; o dry-run não publica.
 Lighthouse 13.6.0 em Cloudflare local, build `INDEX_SITE=true`, sem testes de
 navegador concorrentes:
 
-| Perfil       | Performance | Acessibilidade | Boas práticas | SEO | LCP   | TBT   | CLS |
-| ------------ | ----------- | -------------- | ------------- | --- | ----- | ----- | --- |
-| PT-BR mobile | 100         | 100            | 100           | 100 | 0,8 s | 60 ms | 0   |
-| EN desktop   | 100         | 100            | 100           | 100 | 0,2 s | 0 ms  | 0   |
+| Perfil       | Performance | Acessibilidade | Boas práticas | SEO | LCP   | TBT  | CLS |
+| ------------ | ----------- | -------------- | ------------- | --- | ----- | ---- | --- |
+| PT-BR mobile | 100         | 100            | 100           | 100 | 0,9 s | 0 ms | 0   |
+| EN desktop   | 100         | 100            | 100           | 100 | 0,3 s | 0 ms | 0   |
 
 Resultados de laboratório local, não dados de campo ou garantia de produção.
 A primeira coleta, concorrente com QA e com `noindex`, foi descartada como

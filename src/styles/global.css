@@ -142,6 +142,7 @@ img {
   background: var(--accent);
   color: var(--on-accent);
   z-index: 20;
+  transition: none;
 }
 .skip-link:focus {
   transform: none;
@@ -327,7 +328,8 @@ img {
 }
 .hero-visual {
   min-width: 0;
-  height: 584px;
+  min-height: 584px;
+  height: auto;
   position: relative;
   display: flex;
   align-items: center;
@@ -1593,7 +1595,8 @@ details p {
     gap: 16px;
   }
   .hero-visual {
-    height: 540px;
+    min-height: 540px;
+    height: auto;
     width: min(100%, 460px);
     justify-self: center;
   }
@@ -1815,7 +1818,7 @@ details p {
     display: none;
   }
   .hero-visual {
-    height: 550px;
+    min-height: 550px;
   }
   .hero-visual .signature-preview {
     width: 250px;
@@ -1856,7 +1859,6 @@ details p {
   .layer-expand > b {
     transition:
       transform 0.2s ease,
-      background-color 0.2s ease,
       border-color 0.2s ease,
       box-shadow 0.2s ease;
   }

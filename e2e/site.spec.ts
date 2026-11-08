@@ -194,6 +194,11 @@ for (const path of ['/', '/en/']) {
         () => document.documentElement.scrollWidth <= innerWidth,
       ),
     ).toBe(true);
+    const copy = await page.locator('.hero-copy').boundingBox();
+    const preview = await page.locator('.compact').boundingBox();
+    const status = await page.locator('.availability-bar').boundingBox();
+    expect(preview!.y).toBeGreaterThanOrEqual(copy!.y + copy!.height);
+    expect(status!.y).toBeGreaterThanOrEqual(preview!.y + preview!.height);
   });
 
   test(`${path} has stable layout, local-only resources and QA screenshots`, async ({
