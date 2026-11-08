@@ -12,5 +12,6 @@ pública, 404, redirects, metadados e headers. Registre revisão e versão de de
 O histórico inclui uma branch inicial de bootstrap e releases já publicadas no
 [GitHub](https://github.com/patrickfcf/lasso-ri-website/releases). Não mova nem
 reescreva tags existentes. Os workflows versionados validam push em `main` e PRs;
-não há workflow de publicação acionado por tag. O deploy Cloudflare é uma etapa
-separada que exige autorização e revisão das configurações de hospedagem.
+não há workflow de publicação acionado por tag. O Workers Builds publica pushes
+em `main` conforme a configuração autorizada em [Deployment](deployment.md).
+Criar uma tag/release não dispara uma nova publicação; mergear em `main` dispara.
