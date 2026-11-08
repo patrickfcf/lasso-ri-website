@@ -1,5 +1,8 @@
 # Descoberta do ecossistema
 
+> Atualização 08/11/2026: C2 é a direção ativa e supersede as cores Richmond
+> descritas nesta descoberta histórica da PR #23. Veja [design](design.md).
+
 Revisão em 08/11/2026 para o redesign institucional. Código do website baseado em
 `origin/main` `43e5eb6`. Checkout original limpo, preservado. A única PR aberta no
 website era #21 (TypeScript); nenhum redesign concorrente aberto foi encontrado.

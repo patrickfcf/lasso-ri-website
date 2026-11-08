@@ -16,7 +16,7 @@ for (const path of ['/', '/en/', '/support/', '/en/privacy/']) {
       "script-src 'self'",
     );
     await expect(page.locator('h1')).toBeVisible();
-    await expect(page.locator('img').first()).toBeVisible();
+    await expect(page.locator('img:visible').first()).toBeVisible();
     expect(
       await page.evaluate(
         () => document.documentElement.scrollWidth <= window.innerWidth,
@@ -112,22 +112,22 @@ for (const path of ['/', '/en/']) {
     await page.locator('#theme-light').check();
     await expect(page.locator('body')).toHaveCSS(
       'background-color',
-      'rgb(243, 245, 248)',
+      'rgb(255, 255, 255)',
     );
     await page.locator('#theme-dark').check();
     await expect(page.locator('body')).toHaveCSS(
       'background-color',
-      'rgb(16, 26, 41)',
+      'rgb(16, 17, 20)',
     );
     await page.locator('#theme-system').check();
     await expect(page.locator('body')).toHaveCSS(
       'background-color',
-      'rgb(16, 26, 41)',
+      'rgb(16, 17, 20)',
     );
     await page.emulateMedia({ colorScheme: 'light' });
     await expect(page.locator('body')).toHaveCSS(
       'background-color',
-      'rgb(243, 245, 248)',
+      'rgb(255, 255, 255)',
     );
     await page.locator('.theme-picker summary').click();
     await page.locator('.mobile-menu summary').click();

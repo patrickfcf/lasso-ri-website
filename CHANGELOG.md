@@ -5,6 +5,10 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- Migração C2 v1.0.0: superfícies monocromáticas, azul seletivo, cores semânticas e ícones originais conforme o tema.
+- Snapshot canônico com SHA-256, geração CSS, contraste e detecção de drift.
+- Governança e checklist dos quatro repositórios; sem merge ou deploy.
+
 - Redesign institucional premium: Lasso RI como ecossistema de inteligência de RI,
   com Richmond Ink, slogan oficial, narrativa e metadados PT-BR/EN.
 - Radar Signature demonstrativo, fluxo conceitual de Intelligence e arquitetura
