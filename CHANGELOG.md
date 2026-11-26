@@ -5,6 +5,9 @@ publicação nem uma versão já distribuída.
 
 ## Unreleased
 
+- typescript-eslint 8.73 e Wrangler 4.166, com TypeScript 7.1 beta fixado para
+  satisfazer o peer do parser e manter a instalação reproduzível com `npm ci`.
+
 - Correção do seletor de aparência: opções em linhas completas, sem quebra de
   palavras ou sobreposição com o título em PT-BR/EN, desktop e mobile.
 
